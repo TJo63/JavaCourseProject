@@ -1,224 +1,71 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-
-<!DOCTYPE html>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-
-      xmlns:h="http://java.sun.com/jsf/html"
-
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <!--<h:outputLabel value="Hello, world"/>-->
+</f:view>
 
 <h:head>
+    <style type="text/css">
+        .bodystyle{
+            /*background-image:url("images/logo.png");*/
+            /*background-repeat: no-repeat;*/
+            /*background-size: 1500px 800px;*/
 
-    <title>Project Name</title>
-
-    <meta name="author" content="The Author"></meta>
-
-    <style>
-        .logostyle{
-            float:left;
-            width: 80px;
-            height: 40px;
         }
-    </style>
 
+        .logostyle{
+            size: 1px 1px;
+        }
+
+    </style>
 </h:head>
 
-<!-- Add 50px padding top to the body for the navbar -->
-
-<h:body style="padding-top: 50px; padding-bottom: 20px;">
-
-    <div>
-
-        <b:image library="images" name="logo.png"   styleClass="logostyle"/>
-    </div>
-
-    <b:navBar brand="Towards success" value="home"   inverse="true" fixed="top">
-
-        <b:navbarLinks>
-
-            <b:navLink value="home" outcome="homepage"></b:navLink>
-
-            <b:navLink value="Google" href="https://www.google.com/"></b:navLink>
-
-            <!--<b:dropMenu value="Dropdown">-->
-
-                <!--<b:navLink value="Index" outcome="index.xhtml"></b:navLink>-->
-
-                <!--<b:navLink value="Another action" href="#"></b:navLink>-->
-
-                <!--<b:navLink value="Something else here" href="#"></b:navLink>-->
-
-                <!--<b:navLink></b:navLink>-->
-
-                <!--<b:navLink header="My Details"></b:navLink>-->
-
-                <!--<b:navLink value="Cars" outcome="editgrid"></b:navLink>-->
-
-                <!--<b:navLink value="About me" outcome="me"></b:navLink>-->
-
-            <!--</b:dropMenu>-->
-
-        </b:navbarLinks>
-
-        <h:form styleClass="navbar-form navbar-right">
-
-            <div class="form-group">
-
-                <!--<b:inputText placeholder="Email" fieldSize="sm"/>-->
-                <!--<b:button value-->
-                <b:commandButton value="Sign in as teacher" look="success" icon="chevron-right" iconAlign="right"/>
-                <b:commandButton value="Sign in as student" look="success" icon="chevron-right" iconAlign="right"/>
-                <b:commandButton value="Sign in as admin" look="success" icon="chevron-right" iconAlign="right"/>
-
-
-            </div>
-
-            <div class="form-group">
-
-                <!--<b:inputText placeholder="Password" fieldSize="sm"/>-->
-
-            </div>
-
-
-
-            <!--#{' '}-->
-
-            <!--<b:commandButton action="a" value="Sign in" look="success" icon="chevron-right" iconAlign="right"/>-->
-
-        </h:form>
-
-    </b:navBar>
-
-    <b:jumbotron>
-
-        <b:container>
-
-            <h1>Lexicon University</h1>
-            <h2>Study Your University Course in Europe</h2>
-
-            <p>
-                With Lexicon you can get the best of both worlds. Internationally recognised qualifications alongside the flexibility of online study.
-
-                If you have ambitions to formalise your work experience, become a leader in your industry or change your career path, then you can find your perfect career-focused degree qualification here.
-
-            </p>
-
-            <p>
-
-                <a href="https://www.lexicon.se/" class="btn btn-lg btn-info">Lexicon Website »</a>
-
-            </p>
-
-        </b:container>
-
-
-
-    </b:jumbotron>
-
-    <b:container>
-
-        <b:row>
-
-            <b:column col-md="4">
-
-                <h2>Master's Study</h2>
-                <h3>Qualify for a global career</h3>
-
-                <p>
-                    When studying at Chalmers you will learn to think independently and to meet future challenges with the help of engineering methods. We emphasise your creativity and believe in the necessity of free thinking, so that you can be sure that you are able to test your own ideas for real. To facilitate an open environment and a close cooperation between students and teachers we pursue a truly informal atmosphere. With teachers and students from various cultural backgrounds, the whole experience is designed to broaden your horizons and to provide access to a greater network. </p>
-
-                <p><b:button href="http://goteborg.se/wps/portal/start/kultur-och-fritid/bibliotek/!ut/p/z1/hY5BC4IwHMU_jdf9N3M2u62DkUppBNkuobGmoE7matCnz45B0bs93u_xHggoQQzVo1WVbfVQdbM_i_CSk6Rga8LxfhPFeHtM83iXZqw4hHD6B4g5xj_EMSQg2rpH7tojjHzq04CFhLCA-kFEl-99PtQLpkAYeZNGGnQ3863G2nFaedjDzjmktFadRJP08LdGoycL5QcIY18-M3niL9YSigE!/dz/d5/L2dBISEvZ0FBIS9nQSEh/" value="View details of Library »"/></p>
-
-                <!--<p>-->
-                    <!--<b:video-->
-                            <!--small-screen="two-thirds"-->
-                            <!--src="https://www.youtube.com/watch?v=sgsD-5XNp6I"-->
-                            <!--tooltip="Going to Bibliotek (https://www.youtube.com/watch?v=sgsD-5XNp6I)"-->
-                            <!--tooltip-position="right"-->
-                            <!--onplay="onplay()"-->
-                            <!--onpause="onpause()"-->
-                            <!--onloadeddata="onloadeddata()"-->
-                    <!--/>-->
-
-                <!--</p>-->
-
-            </b:column>
-
-            <b:column col-md="4">
-
-                <h2>Departments</h2>
-                <h3></h3>
-
-                <p>
-
-                    Architecture and Civil Engineering<br/>
-                    Biology and Biological Engineering<br/>
-                    Chemistry and Chemical Engineering<br/>
-                    Communication and Learning in Science<br/>
-                    Computer Science and Engineering<br/>
-                    Electrical Engineering<br/>
-                    Industrial and Materials Science<br/>
-                    Mathematical Sciences<br/>
-                    Mechanics and Maritime Sciences<br/>
-                    Microtechnology and Nanoscience<br/>
-                    Physics<br/>
-                    Space, Earth and Environment<br/>
-                </p>
-                <!--<p>-->
-                    <!--When you select your study programme a list of databases you are able to access through that programme will be shown along with other useful resources suggested by your programme.-->
-                    <!--You should only select the study programme you are a member of as if you select a different one you may not be able to access all the resources shown.-->
-                <!--</p>-->
-
-                <!--&lt;!&ndash;<p><b:button outcome="" value="View details »"/></p>&ndash;&gt;-->
-                <!--<b:selectBooleanCheckbox value="Applied Educational Leadership and Management" caption="Applied Educational Leadership and Management" label="Please decide" />-->
-                <!--<b:selectBooleanCheckbox value="Business Administration" caption="Business Administration" />-->
-                <!--<b:selectBooleanCheckbox value="CeDEP" caption="CeDEP" />-->
-                <!--<b:selectBooleanCheckbox value="CeFiMS" caption="CeFiMS"  />-->
-                <!--<b:selectBooleanCheckbox value="CIS and Creative Computing" caption="CIS and Creative Computing"  />-->
-                <!--<b:selectBooleanCheckbox value="CISD Global Diplomacy" caption="CISD Global Diplomacy"  />-->
-                <!--<b:selectBooleanCheckbox value="Combined Degrees Scheme" caption="Combined Degrees Scheme"  />-->
-                <!--<b:selectBooleanCheckbox value="Divinity (BA) and Theology (Dip)" caption="Divinity (BA) and Theology (Dip)" />-->
-                <!--<b:selectBooleanCheckbox value="Economics, Management, Finance and Social Sciences (EMFSS)" caption="Economics, Management, Finance and Social Sciences (EMFSS)"  />-->
-                <!--<b:selectBooleanCheckbox value="Education (MA)" caption="Education (MA)"  />-->
-
-            </b:column>
-
-            <b:column col-md="4">
-
-                <h2>Areas of advance</h2>
-
-                <!--<h3>In our online help pages you can find a wide range of information to help you use the resources we provide.</h3>-->
-
-                <p>
-                    The Areas of Advance are organised as strong, challengedriven thematic platforms for strategy and long-term collaboration that hunt
-                    down specific challenges, often directly relevant for industry and society. They also offer common access to cutting-edge research
-                    infrastructures as well as to several targeted centres. At the same time, our departments represent a continuous
-                    source of expertise. And it is this, the interplay between the departments and the Areas of Advance, that is so instrumental
-                    to our success, mobilizing all aspects of our operations.
-
-
-                </p>
-
-
-
-            </b:column>
-
-        </b:row>
-
-        <hr/>
-
-        <footer>
-
-            <p>© Java Project 2018</p>
-
-        </footer>
-
-    </b:container>
-
-
-
+<h:body styleClass="bodystyle">
+    <p:graphicImage value="images/logo.png" styleClass="logostyle"/>
+    <center>
+        <h1>Home Page</h1>
+        <table>
+            <tr>
+                <!--<td>Student ID:</td>-->
+                <td>
+                    <!--<h:inputText label="User Id"-->
+                                 <!--id="userId" value="#{userBean.student_id}"-->
+                                 <!--required="true"/>-->
+                    <!--<h:message for="userId" />-->
+                    <p><h:button value="Student Login" outcome="studentlogin" /></p>
+
+                </td>
+            </tr>
+            <tr>
+                <!--<td>Password:</td>-->
+                <td>
+                    <!--<h:inputSecret label="Password"-->
+                                   <!--id="password" value="#{userBean.password}"-->
+                                   <!--required="true"/>-->
+                    <!--<h:message for="password" />-->
+                    <p><h:button value="Teacher Login" outcome="teacherlogin"/></p>
+                </td>
+            </tr>
+            <tr>
+                <!--<td>Password:</td>-->
+                <td>
+                    <!--<h:inputSecret label="Password"-->
+                    <!--id="password" value="#{userBean.password}"-->
+                    <!--required="true"/>-->
+                    <!--<h:message for="password" />-->
+                    <p><h:button value="Admin Login" outcome="adminlogin"/></p>
+                </td>
+            </tr>
+        </table>
+
+    </center>
 </h:body>
 
 </html>
