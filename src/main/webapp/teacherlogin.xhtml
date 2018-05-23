@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <!--<h:outputLabel value="Hello, world"/>-->
+</f:view>
+
+<h:head>
+    <style type="text/css">
+        .bodystyle{
+            background-image:url("images/teacher_login_image.png");
+            background-repeat: no-repeat;
+            background-size: 1500px 800px;
+
+        }
+
+    </style>
+</h:head>
+
+<h:body styleClass="bodystyle">
+    <center>
+        <h1>Teacher Login</h1>
+        <table>
+            <tr>
+                <td>Teacher ID:</td>
+                <td>
+                    <h:inputText label="User Id"
+                                 id="userId" value="#{userBean.teacher_id}"
+                                 required="true"/>
+                    <h:message for="userId" />
+                </td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td>
+                    <h:inputSecret label="Password"
+                                   id="password" value="#{userBean.password}"
+                                   required="true"/>
+                    <h:message for="password" />
+                </td>
+            </tr>
+        </table>
+        <p><h:button value="Sign in" outcome="teacherpage1"/></p>
+    </center>
+</h:body>
+
+</html>
