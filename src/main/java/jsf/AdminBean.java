@@ -1,6 +1,7 @@
 package jsf;
 import domain.StudentDomain;
 import ejb.StudentService;
+import jpa.Course;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -24,6 +25,9 @@ public class AdminBean {
 
 
         return "student";
+
+    }
+    public void addCourse(){
 
     }
 
