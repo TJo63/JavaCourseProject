@@ -23,10 +23,10 @@
     </style>
 </h:head>
 <h:body styleClass="bodystyle">
-    <h:form>
     <h1>Create new user</h1>
     <p:accordionPanel>
         <p:tab title="Create Student">
+            <h:form>
             <h:outputText value="Please enter the student details" />
             <h:panelGrid columns="2" cellpadding="20">
                 Firstname : <h:inputText id="student_firstname_id" value="#{adminBean.firstName}" required="true"/>
@@ -46,6 +46,7 @@
                 <h:commandButton value="Create" action="#{adminBean.addStudent}"/>
                 </p:tab>
             </h:panelGrid>
+            </h:form>
         </p:tab>
         <p:tab title="Create Teacher">
             <h:outputText value="Please enter the teacher details" />
@@ -81,6 +82,5 @@
         </p:tab>
 
     </p:accordionPanel>
-    </h:form>
 </h:body>
 </html>

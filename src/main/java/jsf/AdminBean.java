@@ -1,7 +1,6 @@
 package jsf;
 import domain.StudentDomain;
-import ejb.StudentService;
-import jpa.Course;
+import ejb.AdminService;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -16,18 +15,15 @@ public class AdminBean {
     private String lastName;
 
     @EJB
-    StudentService studentService;
+    AdminService adminService;
 
     public String addStudent(){
 //        if(getId()==null)
+        System.out.println("asd");
+       adminService.addStudent(new StudentDomain(getFirstName(),getLastName()));
 
-        studentService.addStudent(new StudentDomain(getFirstName(),getLastName()));
 
-
-        return "student";
-
-    }
-    public void addCourse(){
+        return "createUser";
 
     }
 
