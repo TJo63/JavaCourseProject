@@ -23,13 +23,14 @@
     </style>
 </h:head>
 <h:body styleClass="bodystyle">
+    <h:form>
     <h1>Create new user</h1>
     <p:accordionPanel>
         <p:tab title="Create Student">
             <h:outputText value="Please enter the student details" />
             <h:panelGrid columns="2" cellpadding="20">
-                Firstname : <h:inputText id="student_firstname_id" required="true"/>
-                Lastname : <h:inputText id="student_lastname_id" required="true"/>
+                Firstname : <h:inputText id="student_firstname_id" value="#{adminBean.firstName}" required="true"/>
+                Lastname : <h:inputText id="student_lastname_id" value="#{adminBean.lastName}" required="true"/>
                 <!--Course ID : <h:inputText id="courseid_id" required="true"/>-->
                 Course ID :
                 <p:tab>
@@ -42,15 +43,15 @@
                     </select>
                 </p:tab>
                 <p:tab>
-                <h:commandButton value="Create"/>
+                <h:commandButton value="Create" action="#{adminBean.addStudent}"/>
                 </p:tab>
             </h:panelGrid>
         </p:tab>
         <p:tab title="Create Teacher">
             <h:outputText value="Please enter the teacher details" />
             <h:panelGrid columns="2" cellpadding="20">
-                Firstname : <h:inputText id="teacher_firstname_id" required="true"/>
-                Lastname : <h:inputText id="teacher_lastname_id" required="true"/>
+                Firstname : <h:inputText id="teacher_firstname_id"  required="true"/>
+                Lastname : <h:inputText id="teacher_lastname_id"  required="true"/>
                 <!--Department ID : <h:inputText id="departmentid_id" required="true"/>-->
                 Department:
                 <p:tab> <select name="Department">
@@ -80,6 +81,6 @@
         </p:tab>
 
     </p:accordionPanel>
-
+    </h:form>
 </h:body>
 </html>
