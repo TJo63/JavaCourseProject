@@ -5,6 +5,6 @@ import domain.StudentDomain;
 import javax.ejb.Local;
 
 @Local
-public interface StudentService {
+public interface AdminService {
     void addStudent(StudentDomain student);
 }
