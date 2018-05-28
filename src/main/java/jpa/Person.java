@@ -13,6 +13,7 @@ public class Person {
     private Long id;
     private String userName;
     private String name;
+    private UserRole userRole;
 
     Person(){}
 

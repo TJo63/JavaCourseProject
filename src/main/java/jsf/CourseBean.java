@@ -1,6 +1,8 @@
 package jsf;
 
+import domain.CourseDomain;
 import ejb.CourseService;
+import jpa.Course;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -14,10 +16,12 @@ public class CourseBean {
     private String courseName;
 
     @EJB
-    CourseService courseService;
+    CourseService cs;
 
-    public CourseBean() {
-    }
+public String submitCourse(){
+    cs.createCourse( new Course(getCourseId(),getCourseName()));
+    return "index";
+}
 
     public CourseBean(String courseId, String courseName) {
         this.courseId = courseId;

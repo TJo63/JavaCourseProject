@@ -10,12 +10,22 @@ public class Course {
 
     private String courseId;
     private String courseName;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     Course(){}
 
     public Course(String courseId, String courseName) {
         this.courseId = courseId;
         this.courseName = courseName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCourseId() {
