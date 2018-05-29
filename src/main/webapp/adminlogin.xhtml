@@ -12,7 +12,7 @@
 <h:head>
     <style type="text/css">
         .bodystyle{
-            background-image:url("images/admin_login_image2.png");
+            /*background-image:url("images/admin_login_image2.png");*/
             background-repeat: no-repeat;
             background-size: 1500px 800px;
 
@@ -29,7 +29,8 @@
                 <td>Admin ID:</td>
                 <td>
                     <h:inputText label="User Id"
-                                 id="userId" value="#{userBean.admin_id}"
+                                 id="userId"
+
                                  required="true"/>
                     <h:message for="userId" />
                 </td>
@@ -38,7 +39,8 @@
                 <td>Password:</td>
                 <td>
                     <h:inputSecret label="Password"
-                                   id="password" value="#{userBean.password}"
+                                   id="password"
+
                                    required="true"/>
                     <h:message for="password" />
                 </td>

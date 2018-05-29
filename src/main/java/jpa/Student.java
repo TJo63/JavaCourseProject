@@ -9,7 +9,8 @@ import java.util.List;
 
 @Entity
 @NamedQueries({
-//        @NamedQuery(name="selectAll",query="SELECT s FROM Student s"),
+        @NamedQuery(name="selectAllStudents",query="SELECT s FROM Student s"),
+//        @NamedQuery(name="selectSome",query="SELECT t FROM Person t WHERE LOCATE(:filt,t.firstName) >0 ")
 })
 public class Student {
 
@@ -20,6 +21,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private String email;
+//    private List<StudentDomain> studentArrayList=new ArrayList<>();
 
     public Student(){
 
@@ -67,6 +69,12 @@ public class Student {
     }
 //    public List<StudentDomain> getStudents() {
 //        return new ArrayList(Student.values());
+//    }
+//    public List<StudentDomain> viewAllStudents(){
+//        for (Object o:Student) {
+//            studentArrayList.add(o);
+//        }
+//        return studentArrayList;
 //    }
 
 }

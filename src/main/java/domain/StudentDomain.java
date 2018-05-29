@@ -22,6 +22,13 @@ public class StudentDomain {
         this.password=password;
     }
 
+    public StudentDomain(long id, String firstName, String lastName, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email=email;
+
+    }
     public StudentDomain(String email,String password) {
         this.email = email;
         this.password=password;

@@ -5,6 +5,7 @@ import ejb.AdminService;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.util.List;
 //import ejb.adminservice;
 
 @ManagedBean
@@ -33,6 +34,10 @@ public class AdminBean {
         adminService.addPassword(new StudentDomain(getEmail(),getPassword()));
         System.out.println("This is in admin bean, pwd is : "+ getPassword());
         return "createUser";
+    }
+    public List<StudentDomain> getAllStudents(){
+        System.out.println(adminService.viewAllStudents());
+        return adminService.viewAllStudents();
     }
 
     public long getId() {
