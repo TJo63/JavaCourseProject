@@ -19,7 +19,8 @@ public class CourseBean {
     CourseService cs;
 
 public String submitCourse(){
-    cs.createCourse( new Course(getCourseId(),getCourseName()));
+//    cs.createCourse( new Course(getCourseId(),getCourseName()));
+    cs.createCourse(new CourseDomain(getCourseId(),getCourseName()));
     return "index";
 }
 

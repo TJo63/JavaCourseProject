@@ -12,8 +12,13 @@ import java.util.List;
 public class CourseServiceImpl implements CourseService {
 @PersistenceContext
     EntityManager em;
+//    @Override
+//    public void createCourse(Course course) {
+//        em.persist(course);
+//    }
     @Override
-    public void createCourse(Course course) {
-        em.persist(course);
+    public void createCourse(CourseDomain courseDomain){
+        Course cource = new Course(courseDomain.getCourseId(),courseDomain.getCourseName());
+        em.persist(cource);
     }
 }
