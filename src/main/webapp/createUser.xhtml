@@ -31,6 +31,8 @@
             <h:panelGrid columns="2" cellpadding="20">
                 Firstname : <h:inputText id="student_firstname_id" value="#{adminBean.firstName}" required="true"/>
                 Lastname : <h:inputText id="student_lastname_id" value="#{adminBean.lastName}" required="true"/>
+                Email : <h:inputText id="student_email_id" value="#{adminBean.email}" required="true"/>
+                Temp password: <h:inputText id="student_password_id" value="#{adminBean.password}" required="true"/>
                 <!--Course ID : <h:inputText id="courseid_id" required="true"/>-->
                 Course ID :
                 <p:tab>
@@ -49,6 +51,7 @@
             </h:form>
         </p:tab>
         <p:tab title="Create Teacher">
+            <h:form>
             <h:outputText value="Please enter the teacher details" />
             <h:panelGrid columns="2" cellpadding="20">
                 Firstname : <h:inputText id="teacher_firstname_id"  required="true"/>
@@ -65,17 +68,20 @@
                     <h:commandButton value="Create"/>
                 </p:tab>
             </h:panelGrid>
-
+            </h:form>
         </p:tab>
 
         <p:tab title="Create Admin">
+            <h:form>
             <h:outputText value="Please enter the admin details" />
             <h:panelGrid columns="2" cellpadding="20">
+
                 Firstname : <h:inputText id="admin_firstname_id" required="true"/>
                 Lastname : <h:inputText id="admin_lastname_id" required="true"/>
 
 
             </h:panelGrid>
+            </h:form>
             <p:tab>
                 <h:commandButton value="Create"/>
             </p:tab>

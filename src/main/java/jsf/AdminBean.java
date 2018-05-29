@@ -13,18 +13,26 @@ public class AdminBean {
     private Long id;
     private String firstName;
     private String lastName;
+    private String email;
+    private String password;
 
     @EJB
     AdminService adminService;
 
     public String addStudent(){
 //        if(getId()==null)
-        System.out.println("asd");
-       adminService.addStudent(new StudentDomain(getFirstName(),getLastName()));
 
+       adminService.addStudent(new StudentDomain(getFirstName(),getLastName(),getEmail()));
+        System.out.println("This is in admin bean, email is : "+getEmail());
 
+        addPassword();
         return "createUser";
 
+    }
+    public String addPassword(){
+        adminService.addPassword(new StudentDomain(getEmail(),getPassword()));
+        System.out.println("This is in admin bean, pwd is : "+ getPassword());
+        return "createUser";
     }
 
     public long getId() {
@@ -49,5 +57,21 @@ public class AdminBean {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

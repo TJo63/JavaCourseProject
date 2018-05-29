@@ -1,7 +1,11 @@
 package jpa;
 
 
+import domain.StudentDomain;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NamedQueries({
@@ -15,14 +19,16 @@ public class Student {
 
     private String firstName;
     private String lastName;
+    private String email;
 
     public Student(){
 
     }
 
-    public Student(String firstName,String lastName){
+    public Student(String firstName,String lastName,String email){
         this.firstName=firstName;
         this.lastName=lastName;
+        this.email=email;
 
     }
 
@@ -49,4 +55,18 @@ public class Student {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public String getEmail() {
+        System.out.println("The email from the student jpa class is :"+ email);
+        return email;
+
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+//    public List<StudentDomain> getStudents() {
+//        return new ArrayList(Student.values());
+//    }
+
 }
