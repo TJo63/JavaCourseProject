@@ -1,6 +1,7 @@
 package domain;
 
 public class CourseDomain {
+    private Long id;
     private String courseId;
     private String courseName;
 
@@ -10,6 +11,20 @@ public class CourseDomain {
     public CourseDomain(String courseId, String courseName) {
         this.courseId = courseId;
         this.courseName = courseName;
+    }
+
+    public CourseDomain(Long id, String courseId, String courseName) {
+        this.id = id;
+        this.courseId = courseId;
+        this.courseName = courseName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCourseId() {

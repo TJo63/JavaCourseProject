@@ -21,4 +21,18 @@ public class CourseServiceImpl implements CourseService {
         Course cource = new Course(courseDomain.getCourseId(),courseDomain.getCourseName());
         em.persist(cource);
     }
+
+    @Override
+    public List<CourseDomain> readCourses() {
+        return null;
+    }
+
+    @Override
+    public void uppdateCourse(CourseDomain cD) {
+        Course c = em.find(Course.class ,cD.getId());
+        c.setCourseId(cD.getCourseId());
+        c.setCourseName(cD.getCourseName());
+        em.merge(c);
+
+    }
 }

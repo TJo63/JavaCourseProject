@@ -87,6 +87,21 @@
             </p:tab>
         </p:tab>
 
+        <p:tab title="Create Course">
+            <h:form>
+                <h:outputText value="Please enter the course details" />
+                <h:panelGrid columns="2" cellpadding="20">
+                    Course ID : <h:inputText id="courseid_input_id" value="#{courseBean.courseId}" required="true"/>
+                    Course Name : <h:inputText id="coursename_input_id" value="#{courseBean.courseName}" required="true"/>
+
+
+                    <p:tab>
+                        <h:commandButton value="Create" action="#{courseBean.addCourse}"/>
+                    </p:tab>
+                </h:panelGrid>
+            </h:form>
+        </p:tab>
+
     </p:accordionPanel>
 </h:body>
 </html>

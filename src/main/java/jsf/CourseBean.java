@@ -11,22 +11,37 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class CourseBean {
-
+    private Long id;
     private String courseId;
     private String courseName;
 
     @EJB
     CourseService cs;
 
-public String submitCourse(){
+public String addCourse(){
 //    cs.createCourse( new Course(getCourseId(),getCourseName()));
     cs.createCourse(new CourseDomain(getCourseId(),getCourseName()));
-    return "index";
+    return "adminpage1";
 }
+public String addUppdatedCourse(){
+    cs.uppdateCourse(new CourseDomain(getId(),getCourseId(),getCourseName()));
+    return "adminviewcourses";
+}
+
+    public CourseBean() {
+    }
 
     public CourseBean(String courseId, String courseName) {
         this.courseId = courseId;
         this.courseName = courseName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCourseId() {
