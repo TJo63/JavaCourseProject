@@ -24,7 +24,12 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<CourseDomain> readCourses() {
-        return null;
+        List<Course> cL = em.createNamedQuery("getAllCourses").getResultList();
+    List<CourseDomain> cDL = new ArrayList();
+    for (Course c: cL){
+        cDL.add( new CourseDomain(c.getId(), c.getCourseId(), c.getCourseName()));
+    }
+        return cDL;
     }
 
     @Override
@@ -34,5 +39,11 @@ public class CourseServiceImpl implements CourseService {
         c.setCourseName(cD.getCourseName());
         em.merge(c);
 
+    }
+
+    @Override
+    public CourseDomain getCourseById(Long id) {
+        Course c =em.find(Course.class, id );
+        return new CourseDomain(c.getId(), c.getCourseId(), c.getCourseName());
     }
 }

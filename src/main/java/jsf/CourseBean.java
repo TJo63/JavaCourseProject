@@ -2,11 +2,11 @@ package jsf;
 
 import domain.CourseDomain;
 import ejb.CourseService;
-import jpa.Course;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.util.List;
 
 @ManagedBean
 @SessionScoped
@@ -23,9 +23,20 @@ public String addCourse(){
     cs.createCourse(new CourseDomain(getCourseId(),getCourseName()));
     return "adminpage1";
 }
+
+public List<CourseDomain> getCourses(){
+    return cs.readCourses();
+}
+
 public String addUppdatedCourse(){
     cs.uppdateCourse(new CourseDomain(getId(),getCourseId(),getCourseName()));
     return "adminviewcourses";
+}
+
+public String getCourse(long id){
+    CourseDomain cD = cs.getCourseById(getId());
+    return addUppdatedCourse();
+
 }
 
     public CourseBean() {

@@ -15,6 +15,9 @@ public interface CourseService {
     List<CourseDomain> readCourses();
 
     void uppdateCourse(CourseDomain courseDomain);
+
+    CourseDomain getCourseById(Long id);
+
 //    Course deleteCourse();
 //    List<Course> seeCourses();
 //    Course seeAttendedCourses();
