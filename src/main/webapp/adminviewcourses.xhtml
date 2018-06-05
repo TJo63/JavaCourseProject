@@ -54,7 +54,7 @@
             </h:column>
 
             <h:column >
-                <h:commandButton value="Edit" action="#{cs.getId}"/>
+                <h:commandButton value="Edit" action="#{courseBean.getCourse(cs.id)}"/>
             </h:column>
 
             <f:facet name="footer">
@@ -68,12 +68,12 @@
     <h:form>
         <h:outputText value="Please enter the course details" />
         <h:panelGrid columns="2" cellpadding="20">
-            Course ID : <h:inputText id="courseid_input_id" value="#{cs.courseId}" required="true"/>
-            Course Name : <h:inputText id="coursename_input_id" value="#{cs.courseName}" required="true"/>
+            Course ID : <h:inputText id="courseid_input_id" value="#{courseBean.courseId}" required="true"/>
+            Course Name : <h:inputText id="coursename_input_id" value="#{courseBean.courseName}" required="true"/>
 
 
 
-                <h:commandButton value="Create" action="#{cs.addUppdatedCourse}"/>
+                <h:commandButton value="Create" action="#{courseBean.addUppdatedCourse}"/>
 
         </h:panelGrid>
     </h:form>

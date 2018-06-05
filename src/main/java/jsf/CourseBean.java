@@ -34,8 +34,12 @@ public String addUppdatedCourse(){
 }
 
 public String getCourse(long id){
-    CourseDomain cD = cs.getCourseById(getId());
-    return addUppdatedCourse();
+    CourseDomain cD = cs.getCourseById(id);
+    setCourseId(cD.getCourseId());
+    setId(cD.getId());
+    setCourseName(cD.getCourseName());
+    System.out.println(getCourseName());
+    return "adminviewcourses";
 
 }
 
