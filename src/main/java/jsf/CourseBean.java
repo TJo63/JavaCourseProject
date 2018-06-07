@@ -21,7 +21,7 @@ public class CourseBean {
 public String addCourse(){
 //    cs.createCourse( new Course(getCourseId(),getCourseName()));
     cs.createCourse(new CourseDomain(getCourseId(),getCourseName()));
-    return "adminpage1";
+    return "adminviewcourses";
 }
 
 public List<CourseDomain> getCourses(){
@@ -41,6 +41,11 @@ public String getCourse(long id){
     System.out.println(getCourseName());
     return "adminviewcourses";
 
+}
+
+public String removeCoursew(long id){
+    cs.deleteCourse(id);
+    return "adminviewcourses";
 }
 
     public CourseBean() {

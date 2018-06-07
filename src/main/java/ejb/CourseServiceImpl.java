@@ -46,4 +46,10 @@ public class CourseServiceImpl implements CourseService {
         Course c =em.find(Course.class, id );
         return new CourseDomain(c.getId(), c.getCourseId(), c.getCourseName());
     }
+
+    @Override
+    public void deleteCourse(long id) {
+    Course c = em.find(Course.class, id);
+    em.remove(c);
+    }
 }
