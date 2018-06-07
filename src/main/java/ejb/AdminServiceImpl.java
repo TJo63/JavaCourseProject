@@ -43,11 +43,21 @@ public class AdminServiceImpl implements AdminService {
         Student s= em.find(Student.class,id);
         return new StudentDomain(s.getId(),s.getFirstName(),s.getLastName(),s.getEmail());
     }
+    @Override
+    public TeacherDomain getTeacher(Long id) {
+        Teacher t= em.find(Teacher.class,id);
+        return new TeacherDomain(t.getId(),t.getFirstName(),t.getLastName(),t.getEmail());
+    }
 
     @Override
     public void deleteStudent(Long id){
         Student s=em.find(Student.class,id);
         em.remove(s);
+    }
+    @Override
+    public void deleteTeacher(Long id){
+        Teacher t=em.find(Teacher.class,id);
+        em.remove(t);
     }
 
     //    public String updateStudent(int selectedStudent){
@@ -57,6 +67,17 @@ public class AdminServiceImpl implements AdminService {
         System.out.println("The teacher to be added from admin service is "+ teacher.getFirstName()+" "+teacher.getLastName()+teacher.getEmail());
         Teacher t=new Teacher(teacher.getFirstName(),teacher.getLastName(),teacher.getEmail());
         em.persist(t);
+
+    }
+    public void saveTeacher(TeacherDomain teacher){
+
+        System.out.println("The teacher to be save from admin service is "+ teacher.getId()+teacher.getFirstName()+" "+teacher.getLastName()+teacher.getEmail());
+//        Student s=new Student(student.getFirstName(),student.getLastName(),student.getEmail());
+        Teacher t= em.find(Teacher.class,teacher.getId());
+        t.setFirstName(teacher.getFirstName());
+        t.setLastName(teacher.getLastName());
+        t.setEmail(teacher.getEmail());
+        em.merge(t);
 
     }
     public void addStudentPassword(StudentDomain student){
@@ -70,6 +91,7 @@ public class AdminServiceImpl implements AdminService {
         System.out.println("The pwd in admin service is : " + teacher.getPassword() );
         em.persist(st);
     }
+    @Override
     public List<StudentDomain> viewAllStudents(){
         List<Student> students = em.createNamedQuery("selectAllStudents").getResultList();
 //        List<StudentDomain> studentDomains = new ArrayList<>();
@@ -78,6 +100,17 @@ public class AdminServiceImpl implements AdminService {
 //        return studentDomains;
         return students.stream().
                 map(p->new StudentDomain(p.getId(),p.getFirstName(),p.getLastName(),p.getEmail())).
+                collect(Collectors.toList());
+    }
+    @Override
+    public List<TeacherDomain> viewAllTeachers(){
+        List<Teacher> teachers = em.createNamedQuery("selectAllTeachers").getResultList();
+//        List<StudentDomain> studentDomains = new ArrayList<>();
+//        for (Student student : students)
+//            studentDomains.add(student.);
+//        return studentDomains;
+        return teachers.stream().
+                map(p->new TeacherDomain(p.getId(),p.getFirstName(),p.getLastName(),p.getEmail())).
                 collect(Collectors.toList());
     }
 }

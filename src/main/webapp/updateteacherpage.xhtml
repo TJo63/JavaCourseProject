@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<h:head>
+    <style type="text/css">
+        .bodystyle{
+            /*background-image:url("images/teacher_login_image.png");*/
+            background-repeat: no-repeat;
+            background-size: 1500px 800px;
+            background-color: lightgrey;
+
+        }
+
+
+
+    </style>
+</h:head>
+<h:body styleClass="bodystyle">
+    <!--<h:form>-->
+    <!--<h:outputText value="#{adminBean.selectedStudent}"/>-->
+    <!--<h:inputText value="#{st.id}" />-->
+    <!--<h:inputText value="#{adminBean.id}"/>-->
+    <!--<h:inputText value="#{adminBean.firstName}"/>-->
+    <!--<h:inputText value="#{adminBean.lastName}"/>-->
+    <!--<h:inputText value="#{adminBean.email}" /><br/>-->
+    <!--<p:inputText value="#{adminBean.id}"/>-->
+    <h:form>
+        <center>
+            <h1>Please enter the details of the teacher to update</h1>
+            <table>
+                <tr>
+                    <td>
+
+                        <p><p:outputLabel value="Teacher Id : "/></p>
+
+                    </td>
+                    <td>
+
+                        <p><p:outputLabel value="#{adminBean.id}"/></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <p><p:outputLabel value="First Name : "/></p>
+
+                    </td>
+
+                    <td>
+
+                        <p><p:inputText value="#{adminBean.firstName}"/></p>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <p><p:outputLabel value="Last Name : "/></p>
+
+                    </td>
+                    <td>
+
+                        <p><p:inputText value="#{adminBean.lastName}"/></p>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <p><p:outputLabel value="Email : "/></p>
+
+                    </td>
+                    <td>
+
+                        <p><p:inputText value="#{adminBean.email}"/></p>
+
+                    </td>
+                </tr>
+            </table>
+
+            <p:commandButton value="Save" style="alignment: center" action="#{adminBean.saveTeacher}"/>
+            <h:inputHidden value="#{adminBean.id}"/>
+
+        </center>
+    </h:form>
+    <!--</h:form>-->
+</h:body>
+</html>

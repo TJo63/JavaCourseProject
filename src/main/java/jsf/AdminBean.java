@@ -74,6 +74,27 @@ public class AdminBean {
         return "createUser";
 
     }
+    public String editTeacher(Long id){
+        TeacherDomain teacherDomain= adminService.getTeacher(id);
+//        System.out.println("The id given is :"+ id);
+        setId(teacherDomain.getId());
+        setFirstName(teacherDomain.getFirstName());
+        setLastName(teacherDomain.getLastName());
+        setEmail(teacherDomain.getEmail());
+        return "updateteacherpage";
+    }
+    public String saveTeacher(){
+        adminService.saveTeacher(new TeacherDomain(getId(),getFirstName(),getLastName(),getEmail()));
+        System.out.println("This is in admin bean,the teacher saved is :"+getId()+getFirstName()+getLastName()+getEmail());
+
+        return "adminviewteachers";
+
+    }
+    public String deleteTeacher(Long id){
+        adminService.deleteTeacher(id);
+        System.out.println("This is admin bean to delete teacher with id :"+id);
+        return "adminviewteachers";
+    }
     public String addStudentPassword(){
         adminService.addStudentPassword(new StudentDomain(getEmail(),getPassword()));
 //        System.out.println("This is in admin bean, pwd is : "+ getPassword());
@@ -89,6 +110,11 @@ public class AdminBean {
         System.out.println(adminService.viewAllStudents());
         return adminService.viewAllStudents();
     }
+    public List<TeacherDomain> getAllTeachers(){
+        System.out.println(adminService.viewAllTeachers());
+        return adminService.viewAllTeachers();
+    }
+
 
     public Long getId() {
         return id;

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+<f:view>
+    <!--<h:outputLabel value="Hello, world"/>-->
+</f:view>
+
+<h:head>
+    <style type="text/css">
+        .bodystyle{
+            /*background-image:url("images/teacher_login_image.png");*/
+            background-repeat: no-repeat;
+            background-size: 1500px 800px;
+            background-color: lightgrey;
+        ;
+
+        }
+
+
+
+    </style>
+</h:head>
+
+<h:body styleClass="bodystyle">
+    <h:form>
+        <p:dataTable  var="tr" value="#{adminBean.allTeachers}" >
+            <f:facet name="header">
+                Teachers
+            </f:facet>
+            <!--<p:column selectionMode="single" style="width:16px;text-align:center"/>-->
+            <p:column headerText=" Student Id">
+                <h:outputText value="#{tr.id}" />
+            </p:column>
+            <p:column headerText="First Name">
+                <h:outputText value="#{tr.firstName}" />
+            </p:column>
+            <p:column headerText="Last Name">
+                <h:outputText value="#{tr.lastName}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{tr.email}" />
+            </p:column>
+            <p:column headerText="Modify">
+                <p:commandButton value="Edit" action="#{adminBean.editTeacher(tr.id)}"/>
+
+                <p:growl id="message" showDetail="true" />
+                <p:commandButton value="Delete" actionListener="#{adminBean.deleteTeacher(tr.id)}" update="message" >
+                    <p:confirm header="Delete teacher?" message="Are you sure?" icon="ui-icon-alert" />
+                </p:commandButton>
+
+            </p:column>
+            <f:facet name="footer">
+            </f:facet>
+        </p:dataTable>
+
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+        </p:confirmDialog>
+
+
+
+    </h:form>
+
+
+
+
+</h:body>
+
+</html>
