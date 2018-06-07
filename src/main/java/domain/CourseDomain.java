@@ -1,6 +1,7 @@
 package domain;
 
-/* cd /Users/roger/glassfish5/bin
+/* please leave for now: roger
+cd /Users/roger/glassfish5/bin
 *  ls
 *  ./asadmin
 * */
