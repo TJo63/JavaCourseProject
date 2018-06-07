@@ -1,8 +1,11 @@
 package ejb;
 
 import domain.StudentDomain;
+import domain.TeacherDomain;
 import jpa.Student;
+import jpa.Teacher;
 import jpa.Secret_student;
+import jpa.Secret_teacher;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -22,10 +25,50 @@ public class AdminServiceImpl implements AdminService {
         em.persist(s);
 
     }
-    public void addPassword(StudentDomain student){
+    public void saveStudent(StudentDomain student){
+
+        System.out.println("The student to be save from admin service is "+ student.getId()+student.getFirstName()+" "+student.getLastName()+student.getEmail());
+//        Student s=new Student(student.getFirstName(),student.getLastName(),student.getEmail());
+        Student s= em.find(Student.class,student.getId());
+        s.setFirstName(student.getFirstName());
+        s.setLastName(student.getLastName());
+        s.setEmail(student.getEmail());
+        em.merge(s);
+
+    }
+
+
+    @Override
+    public StudentDomain getStudent(Long id) {
+        Student s= em.find(Student.class,id);
+        return new StudentDomain(s.getId(),s.getFirstName(),s.getLastName(),s.getEmail());
+    }
+
+    @Override
+    public void deleteStudent(Long id){
+        Student s=em.find(Student.class,id);
+        em.remove(s);
+    }
+
+    //    public String updateStudent(int selectedStudent){
+//        Student s= em.find(Student.class,)
+//    }
+    public void addTeacher(TeacherDomain teacher){
+        System.out.println("The teacher to be added from admin service is "+ teacher.getFirstName()+" "+teacher.getLastName()+teacher.getEmail());
+        Teacher t=new Teacher(teacher.getFirstName(),teacher.getLastName(),teacher.getEmail());
+        em.persist(t);
+
+    }
+    public void addStudentPassword(StudentDomain student){
         Secret_student ss=new Secret_student(student.getEmail(),student.getPassword());
         System.out.println("The pwd in admin service is : " + student.getPassword() );
+        System.out.println("The email in admin service is : " + student.getEmail() );
         em.persist(ss);
+    }
+    public void addTeacherPassword(TeacherDomain teacher){
+        Secret_teacher st=new Secret_teacher(teacher.getEmail(),teacher.getPassword());
+        System.out.println("The pwd in admin service is : " + teacher.getPassword() );
+        em.persist(st);
     }
     public List<StudentDomain> viewAllStudents(){
         List<Student> students = em.createNamedQuery("selectAllStudents").getResultList();

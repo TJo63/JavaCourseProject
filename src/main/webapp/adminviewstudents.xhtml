@@ -5,10 +5,12 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+>
 <f:view>
     <h:outputLabel value="Hello, world"/>
 </f:view>
+
 <h:head>
     <style type="text/css">
         .bodystyle{
@@ -16,54 +18,58 @@
             background-repeat: no-repeat;
             background-size: 1500px 800px;
             background-color: lightgrey;
+            ;
 
         }
 
 
+
     </style>
 </h:head>
+
 <h:body styleClass="bodystyle">
     <h:form>
-        <h:dataTable id="dt1" value="#{adminBean.allStudents}" var="st" bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" rows="4" width="50%" >
+        <p:dataTable  var="st" value="#{adminBean.allStudents}" >
+        <f:facet name="header">
+        Students
+        </f:facet>
+        <!--<p:column selectionMode="single" style="width:16px;text-align:center"/>-->
+        <p:column headerText=" Student Id">
+        <h:outputText value="#{st.id}" />
+        </p:column>
+        <p:column headerText="First Name">
+        <h:outputText value="#{st.firstName}" />
+        </p:column>
+        <p:column headerText="Last Name">
+        <h:outputText value="#{st.lastName}" />
+        </p:column>
+        <p:column headerText="Email">
+        <h:outputText value="#{st.email}" />
+        </p:column>
+            <p:column headerText="Modify">
+                <p:commandButton value="Edit" action="#{adminBean.editStudent(st.id)}"/>
 
-            <f:facet name="header">
-                <h:outputText value="Students" />
-            </f:facet>
+                <p:growl id="message" showDetail="true" />
+                <p:commandButton value="Delete" actionListener="#{adminBean.deleteStudent(st.id)}" update="message" >
+                    <p:confirm header="Delete Student?" message="Are you sure?" icon="ui-icon-alert" />
+                </p:commandButton>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Id" />
-                </f:facet>
-                <h:outputText style="" value="#{st.id}" ></h:outputText>
-            </h:column>
+            </p:column>
+        <f:facet name="footer">
+        </f:facet>
+        </p:dataTable>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="First Name" />
-                </f:facet>
-                <h:outputText style="" value="#{st.firstName}" ></h:outputText>
-            </h:column>
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+        </p:confirmDialog>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Last Name"/>
-                </f:facet>
-                <h:outputText value="#{st.lastName}"></h:outputText>
-            </h:column>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Email"/>
-                </f:facet>
-                <h:outputText value="#{st.email}"></h:outputText>
-            </h:column>
 
-            <f:facet name="footer">
-                <h:outputText value="The End" />
-            </f:facet>
-
-        </h:dataTable>
     </h:form>
+
+
+
 
 </h:body>
 

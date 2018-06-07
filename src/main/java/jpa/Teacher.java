@@ -1,7 +1,7 @@
 package jpa;
 
 
-import domain.StudentDomain;
+import domain.TeacherDomain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,11 +10,10 @@ import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name="selectAllStudents",query="SELECT s FROM Student s"),
+        @NamedQuery(name="selectAllTeachers",query="SELECT t FROM Teacher t"),
 //        @NamedQuery(name="selectSome",query="SELECT t FROM Person t WHERE LOCATE(:filt,t.firstName) >0 ")
-//        @NamedQuery(name = "saveStudent",query = "Update Student set firstname="")
 })
-public class Student {
+public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +22,13 @@ public class Student {
     private String firstName;
     private String lastName;
     private String email;
-//    private List<StudentDomain> studentArrayList=new ArrayList<>();
+//    private List<TeacherDomain> TeacherArrayList=new ArrayList<>();
 
-    public Student(){
+    public Teacher(){
 
     }
 
-    public Student(String firstName,String lastName,String email){
+    public Teacher(String firstName,String lastName,String email){
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
@@ -61,7 +60,7 @@ public class Student {
     }
 
     public String getEmail() {
-        System.out.println("The email from the student jpa class is :"+ email);
+        System.out.println("The email from the Teacher jpa class is :"+ email);
         return email;
 
     }
@@ -69,14 +68,14 @@ public class Student {
     public void setEmail(String email) {
         this.email = email;
     }
-//    public List<StudentDomain> getStudents() {
-//        return new ArrayList(Student.values());
+//    public List<TeacherDomain> getTeachers() {
+//        return new ArrayList(Teacher.values());
 //    }
-//    public List<StudentDomain> viewAllStudents(){
-//        for (Object o:Student) {
-//            studentArrayList.add(o);
+//    public List<TeacherDomain> viewAllTeachers(){
+//        for (Object o:Teacher) {
+//            TeacherArrayList.add(o);
 //        }
-//        return studentArrayList;
+//        return TeacherArrayList;
 //    }
 
 }

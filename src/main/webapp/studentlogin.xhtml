@@ -12,9 +12,11 @@
 <h:head>
     <style type="text/css">
         .bodystyle{
-            /*background-image:url("images/student_login_image.png");*/
+            /*background-image:url("images/teacher_login_image.png");*/
             background-repeat: no-repeat;
             background-size: 1500px 800px;
+            background-color: lightgrey;
+        ;
 
         }
 
@@ -24,28 +26,31 @@
 <h:body styleClass="bodystyle">
     <center>
         <h1>Student Login</h1>
+        <h:form>
         <table>
             <tr>
                 <td>Student ID:</td>
                 <td>
-                    <h:inputText label="User Id"
-                                 id="userId" value="#{userBean.student_id}"
+                    <h:inputText label="Email Id"
+                                 id="userId" value="#{studentBean.email}"
                                  required="true"/>
-                    <h:message for="userId" />
+                    <!--<h:message for="userId" />-->
                 </td>
             </tr>
             <tr>
                 <td>Password:</td>
                 <td>
                     <h:inputSecret label="Password"
-                                   id="password" value="#{userBean.password}"
+                                   id="password" value="#{studentBean.password}"
                                    required="true"/>
-                    <h:message for="password" />
+                    <!--<h:message for="password" />-->
                 </td>
             </tr>
         </table>
-        <p><h:button value="Sign in" action="confirm" /></p>
+        <p><h:button value="Sign in" action="#{studentBean.checkLogin}" /></p>
+        </h:form>
     </center>
+
 </h:body>
 
 </html>

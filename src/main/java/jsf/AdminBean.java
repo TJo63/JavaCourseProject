@@ -1,10 +1,15 @@
 package jsf;
 import domain.StudentDomain;
+import domain.TeacherDomain;
 import ejb.AdminService;
+import jpa.Student;
+import org.primefaces.event.SelectEvent;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import java.util.List;
 //import ejb.adminservice;
 
@@ -16,6 +21,7 @@ public class AdminBean {
     private String lastName;
     private String email;
     private String password;
+    private  Long selectedStudent;
 
     @EJB
     AdminService adminService;
@@ -23,15 +29,59 @@ public class AdminBean {
     public String addStudent(){
 //        if(getId()==null)
 
-       adminService.addStudent(new StudentDomain(getFirstName(),getLastName(),getEmail()));
+        adminService.addStudent(new StudentDomain(getFirstName(),getLastName(),getEmail()));
         System.out.println("This is in admin bean, email is : "+getEmail());
 
-        addPassword();
+        addStudentPassword();
         return "createUser";
 
     }
-    public String addPassword(){
-        adminService.addPassword(new StudentDomain(getEmail(),getPassword()));
+
+    public String saveStudent(){
+        adminService.saveStudent(new StudentDomain(getId(),getFirstName(),getLastName(),getEmail()));
+        System.out.println("This is in admin bean,the student saved is :"+getId()+getFirstName()+getLastName()+getEmail());
+
+        return "adminviewstudents";
+
+    }
+    public String editStudent(Long id){
+        StudentDomain studentDomain= adminService.getStudent(id);
+//        System.out.println("The id given is :"+ id);
+        setId(studentDomain.getId());
+        setFirstName(studentDomain.getFirstName());
+        setLastName(studentDomain.getLastName());
+        setEmail(studentDomain.getEmail());
+        return "updatestudentpage";
+    }
+
+    public String deleteStudent(Long id){
+        adminService.deleteStudent(id);
+        System.out.println("This is admin bean to delete student with id :"+id);
+        return "adminviewstudents";
+    }
+
+    public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Student Selected");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    public String addTeacher(){
+//        if(getId()==null)
+
+        adminService.addTeacher(new TeacherDomain(getFirstName(),getLastName(),getEmail()));
+        System.out.println("This is in admin bean,  teacher email is : "+getEmail());
+
+        addTeacherPassword();
+        return "createUser";
+
+    }
+    public String addStudentPassword(){
+        adminService.addStudentPassword(new StudentDomain(getEmail(),getPassword()));
+//        System.out.println("This is in admin bean, pwd is : "+ getPassword());
+        System.out.println("this is in adminbean.addstudentpassword email and  password is "+getEmail()+getPassword());
+        return "createUser";
+    }
+    public String addTeacherPassword(){
+        adminService.addTeacherPassword(new TeacherDomain(getEmail(),getPassword()));
         System.out.println("This is in admin bean, pwd is : "+ getPassword());
         return "createUser";
     }
@@ -40,7 +90,7 @@ public class AdminBean {
         return adminService.viewAllStudents();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -78,5 +128,13 @@ public class AdminBean {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getSelectedStudent() {
+        return selectedStudent;
+    }
+
+    public void setSelectedStudent(Long selectedStudent) {
+        this.selectedStudent = selectedStudent;
     }
 }

@@ -4,12 +4,10 @@ package jpa;
 import javax.persistence.*;
 
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames="email"))
-
 @NamedQueries({
-//        @NamedQuery(name="selectAll",query="SELECT s FROM Student s"),
+//        @NamedQuery(name="selectAll",query="SELECT s FROM Teacher s"),
 })
-public class Secret_student {
+public class Secret_teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +16,11 @@ public class Secret_student {
     private String email;
     private String password;
 
-    public Secret_student(){
+    public Secret_teacher(){
 
     }
 
-    public Secret_student(String email,String password){
+    public Secret_teacher(String email,String password){
 
         this.email=email;
         this.password=password;
@@ -37,8 +35,12 @@ public class Secret_student {
         this.id = id;
     }
 
+
+
     public String getEmail() {
+        System.out.println("The email from the Teacher jpa class is :"+ email);
         return email;
+
     }
 
     public void setEmail(String email) {
