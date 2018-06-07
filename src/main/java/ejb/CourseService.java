@@ -18,7 +18,7 @@ public interface CourseService {
 
     CourseDomain getCourseById(Long id);
 
-//    Course deleteCourse();
+    void deleteCourse(long id);
 //    List<Course> seeCourses();
 //    Course seeAttendedCourses();
 

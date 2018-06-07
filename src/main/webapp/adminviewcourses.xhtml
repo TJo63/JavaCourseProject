@@ -26,7 +26,7 @@
 </h:head>
 <h:body styleClass="bodystyle">
     <h:form>
-        <h:dataTable id="dt1" value="#{courseBean.courses}" var="cs" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%" >
+        <h:dataTable id="dt1" value="#{courseBean.courses}" var="cs" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%"  >
 
             <f:facet name="header">
                 <h:outputText value="Courses" />
@@ -57,6 +57,10 @@
                 <h:commandButton value="Edit" action="#{courseBean.getCourse(cs.id)}"/>
             </h:column>
 
+            <h:column >
+                <h:commandButton value="Delet Course" action="#{courseBean.removeCoursew(cs.id)}"/>
+            </h:column>
+
             <f:facet name="footer">
                 <h:outputText value="The End" />
             </f:facet>
@@ -66,17 +70,34 @@
 
 
     <h:form>
-        <h:outputText value="Please enter the course details" />
+        <h:outputText value="Edit course details" />
         <h:panelGrid columns="2" cellpadding="20">
-            Course ID : <h:inputText id="courseid_input_id" value="#{courseBean.courseId}" required="true"/>
-            Course Name : <h:inputText id="coursename_input_id" value="#{courseBean.courseName}" required="true"/>
+            Update Course ID : <h:inputText id="courseid_change_id" value="#{courseBean.courseId}" required="true"/>
+            Update Course Name : <h:inputText id="coursename_change_id" value="#{courseBean.courseName}" required="true"/>
 
 
 
-                <h:commandButton value="Create" action="#{courseBean.addUppdatedCourse}"/>
+                <h:commandButton value="Update Course" action="#{courseBean.addUppdatedCourse}"/>
 
         </h:panelGrid>
     </h:form>
+
+
+        <h:form>
+            <h:outputText value="Add course" />
+            <h:panelGrid columns="2" cellpadding="20">
+                Course ID : <h:inputText id="courseid_input_id" value="#{courseBean.courseId}" required="true"/>
+                Course Name : <h:inputText id="coursename_input_id" value="#{courseBean.courseName}" required="true"/>
+
+
+                <h:body>
+                    <h:commandButton value="Create Course" action="#{courseBean.addCourse}"/>
+                </h:body>
+            </h:panelGrid>
+        </h:form>
+
+
+
 
 </h:body>
 <h:body styleClass="bodystyle">

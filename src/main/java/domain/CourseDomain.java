@@ -1,5 +1,10 @@
 package domain;
 
+/* cd /Users/roger/glassfish5/bin
+*  ls
+*  ./asadmin
+* */
+
 public class CourseDomain {
     private Long id;
     private String courseId;
