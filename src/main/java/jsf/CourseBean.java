@@ -29,7 +29,7 @@ public String addCourse(){
 public List<CourseDomain> getCourses(){
     return cs.readCourses();
 }
-//Convert List<CourseDomain> getCourses() above to Map<Long, String> dropDown()
+//Convert List<CourseDomain> getCourses() above to Map<Long, String> dropDown()..
 public Map<Long, String> dropDown(){
     List<CourseDomain> listDomain = getCourses();
     Map<Long, String> dropDownMap = new HashMap<>();
