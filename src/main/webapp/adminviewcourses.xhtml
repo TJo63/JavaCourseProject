@@ -43,7 +43,7 @@
                 <f:facet name="header">
                     <h:outputText value="Course Id" />
                 </f:facet>
-                <h:outputText style="" value="#{cs.courseId}" ></h:outputText>
+                <h:outputText style="" value="#{cs.stringId}" ></h:outputText>
             </h:column>
 
             <h:column>
@@ -72,7 +72,7 @@
     <h:form>
         <h:outputText value="Edit course details" />
         <h:panelGrid columns="2" cellpadding="20">
-            Update Course ID : <h:inputText id="courseid_change_id" value="#{courseBean.courseId}" required="true"/>
+            Update Course ID : <h:inputText id="courseid_change_id" value="#{courseBean.stringId}" required="true"/>
             Update Course Name : <h:inputText id="coursename_change_id" value="#{courseBean.courseName}" required="true"/>
 
 
@@ -86,7 +86,7 @@
         <h:form>
             <h:outputText value="Add course" />
             <h:panelGrid columns="2" cellpadding="20">
-                Course ID : <h:inputText id="courseid_input_id" value="#{courseBean.courseId}" required="true"/>
+                Course ID : <h:inputText id="courseid_input_id" value="#{courseBean.stringId}" required="true"/>
                 Course Name : <h:inputText id="coursename_input_id" value="#{courseBean.courseName}" required="true"/>
 
 
@@ -107,11 +107,11 @@
             <tr>
                 <td>Course Id:</td>
                 <td>
-                    <h:inputText label="Course Id"
-                                 id="courseid"
+                    <h:inputText label="String Id"
+                                 id="stringid"
 
                                  required="true"/>
-                    <h:message for="courseid" />
+                    <h:message for="stringid" />
                 </td>
             </tr>
             <tr>

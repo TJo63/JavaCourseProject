@@ -1,6 +1,7 @@
 package jpa;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NamedQuery(name = "getAllCourses", query = "select c from Course c")
@@ -9,14 +10,17 @@ import javax.persistence.*;
             @Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
             private Long id;
-            private String courseId;
+            private String stringId;
             private String courseName;
+//            @OneToMany
+//            private List <CourseDate> courseDates;
+
 
             public Course(){}
 
 
-            public Course(String courseId, String courseName) {
-                this.courseId = courseId;
+            public Course(String stringId, String courseName) {
+                this.stringId = stringId;
                 this.courseName = courseName;
             }
 
@@ -28,12 +32,12 @@ import javax.persistence.*;
         this.id = id;
     }
 
-    public String getCourseId() {
-        return courseId;
+    public String getStringId() {
+        return stringId;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setStringId(String stringId) {
+        this.stringId = stringId;
     }
 
     public String getCourseName() {

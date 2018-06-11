@@ -18,7 +18,7 @@ public class CourseServiceImpl implements CourseService {
 //    }
     @Override
     public void createCourse(CourseDomain courseDomain){
-        Course cource = new Course(courseDomain.getCourseId(),courseDomain.getCourseName());
+        Course cource = new Course(courseDomain.getStringId(),courseDomain.getCourseName());
         em.persist(cource);
     }
 
@@ -27,7 +27,7 @@ public class CourseServiceImpl implements CourseService {
         List<Course> cL = em.createNamedQuery("getAllCourses").getResultList();
     List<CourseDomain> cDL = new ArrayList();
     for (Course c: cL){
-        cDL.add( new CourseDomain(c.getId(), c.getCourseId(), c.getCourseName()));
+        cDL.add( new CourseDomain(c.getId(), c.getStringId(), c.getCourseName()));
     }
         return cDL;
     }
@@ -35,7 +35,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void uppdateCourse(CourseDomain cD) {
         Course c = em.find(Course.class ,cD.getId());
-        c.setCourseId(cD.getCourseId());
+        c.setStringId(cD.getStringId());
         c.setCourseName(cD.getCourseName());
         em.merge(c);
 
@@ -44,7 +44,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public CourseDomain getCourseById(Long id) {
         Course c =em.find(Course.class, id );
-        return new CourseDomain(c.getId(), c.getCourseId(), c.getCourseName());
+        return new CourseDomain(c.getId(), c.getStringId(), c.getCourseName());
     }
 
     @Override

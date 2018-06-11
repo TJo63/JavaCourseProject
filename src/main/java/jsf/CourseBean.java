@@ -6,36 +6,48 @@ import ejb.CourseService;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @ManagedBean
 @SessionScoped
 public class CourseBean {
     private Long id;
-    private String courseId;
+    private String stringId;
     private String courseName;
 
     @EJB
     CourseService cs;
 
 public String addCourse(){
-//    cs.createCourse( new Course(getCourseId(),getCourseName()));
-    cs.createCourse(new CourseDomain(getCourseId(),getCourseName()));
+//    cs.createCourse( new Course(getStringId(),getCourseName()));
+    cs.createCourse(new CourseDomain(getStringId(),getCourseName()));
     return "adminviewcourses";
 }
 
 public List<CourseDomain> getCourses(){
     return cs.readCourses();
 }
+//Convert List<CourseDomain> getCourses() above to Map<Long, String> dropDown()
+public Map<Long, String> dropDown(){
+    List<CourseDomain> listDomain = getCourses();
+    Map<Long, String> dropDownMap = new HashMap<>();
+    for (CourseDomain cD:listDomain) {
+        dropDownMap.put(cD.getId(), cD.getStringId());
+    }
+        return dropDownMap;
+
+}
 
 public String addUppdatedCourse(){
-    cs.uppdateCourse(new CourseDomain(getId(),getCourseId(),getCourseName()));
+    cs.uppdateCourse(new CourseDomain(getId(), getStringId(),getCourseName()));
     return "adminviewcourses";
 }
 
 public String getCourse(long id){
     CourseDomain cD = cs.getCourseById(id);
-    setCourseId(cD.getCourseId());
+    setStringId(cD.getStringId());
     setId(cD.getId());
     setCourseName(cD.getCourseName());
     System.out.println(getCourseName());
@@ -51,8 +63,8 @@ public String removeCoursew(long id){
     public CourseBean() {
     }
 
-    public CourseBean(String courseId, String courseName) {
-        this.courseId = courseId;
+    public CourseBean(String stringId, String courseName) {
+        this.stringId = stringId;
         this.courseName = courseName;
     }
 
@@ -64,12 +76,12 @@ public String removeCoursew(long id){
         this.id = id;
     }
 
-    public String getCourseId() {
-        return courseId;
+    public String getStringId() {
+        return stringId;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setStringId(String stringId) {
+        this.stringId = stringId;
     }
 
     public String getCourseName() {
