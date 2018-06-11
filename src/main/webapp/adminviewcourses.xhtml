@@ -58,7 +58,11 @@
             </h:column>
 
             <h:column >
-                <h:commandButton value="Delet Course" action="#{courseBean.removeCoursew(cs.id)}"/>
+                <h:commandButton value="Delet Course" action="#{courseBean.removeCourse(cs.id)}"/>
+            </h:column>
+
+            <h:column >
+                <h:commandButton value="Add Course Date" action="#{courseBean.getCourse(cs.id)}"/>
             </h:column>
 
             <f:facet name="footer">

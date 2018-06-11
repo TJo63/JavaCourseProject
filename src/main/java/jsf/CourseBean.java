@@ -1,7 +1,9 @@
 package jsf;
 
+import domain.CourseDateDomain;
 import domain.CourseDomain;
 import ejb.CourseService;
+import jpa.CourseDate;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -16,9 +18,11 @@ public class CourseBean {
     private Long id;
     private String stringId;
     private String courseName;
+    private List<CourseDateDomain> courseDates;
 
     @EJB
     CourseService cs;
+
 
 public String addCourse(){
 //    cs.createCourse( new Course(getStringId(),getCourseName()));
@@ -55,10 +59,17 @@ public String getCourse(long id){
 
 }
 
-public String removeCoursew(long id){
+public String removeCourse(long id){
     cs.deleteCourse(id);
     return "adminviewcourses";
 }
+
+//CoursDaates CRUD
+
+    public String addCourseDate(){
+        cs.createCourceDate( new CourseDateDomain());
+        return null;
+    }
 
     public CourseBean() {
     }
@@ -91,4 +102,7 @@ public String removeCoursew(long id){
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
+
+
+
 }

@@ -24,7 +24,13 @@ import java.util.List;
                 this.courseName = courseName;
             }
 
-            public Long getId() {
+    public Course(String stringId, String courseName, List<CourseDate> courseDates) {
+        this.stringId = stringId;
+        this.courseName = courseName;
+        this.courseDates = courseDates;
+    }
+
+    public Long getId() {
                 return id;
     }
 
@@ -46,5 +52,13 @@ import java.util.List;
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public List<CourseDate> getCourseDates() {
+        return courseDates;
+    }
+
+    public void setCourseDates(List<CourseDate> courseDates) {
+        this.courseDates = courseDates;
     }
 }

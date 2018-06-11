@@ -1,10 +1,9 @@
 package ejb;
 
+import domain.CourseDateDomain;
 import domain.CourseDomain;
-import jpa.Course;
 
 import javax.ejb.Local;
-import javax.persistence.Id;
 import java.util.List;
 
 @Local
@@ -20,6 +19,9 @@ public interface CourseService {
 
     void deleteCourse(long id);
 
+//Create CourceDates
+
+    void createCourceDate(CourseDateDomain courseDateDomain);
 
 //    List<Course> seeCourses();
 //    Course seeAttendedCourses();

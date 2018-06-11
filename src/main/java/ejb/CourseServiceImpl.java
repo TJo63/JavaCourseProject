@@ -1,7 +1,9 @@
 package ejb;
 
+import domain.CourseDateDomain;
 import domain.CourseDomain;
 import jpa.Course;
+import jpa.CourseDate;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -51,5 +53,13 @@ public class CourseServiceImpl implements CourseService {
     public void deleteCourse(long id) {
     Course c = em.find(Course.class, id);
     em.remove(c);
+    }
+
+    // Coursdate Implementation
+
+    @Override
+    public void createCourceDate(CourseDateDomain courseDateDomain) {
+        CourseDate courseDate = new CourseDate(courseDateDomain.getDateName());
+        em.persist(courseDate);
     }
 }
