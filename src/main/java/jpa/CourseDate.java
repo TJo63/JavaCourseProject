@@ -1,6 +1,8 @@
 package jpa;
 
 import javax.persistence.*;
+import java.util.List;
+
 
 @Entity
 
@@ -8,18 +10,34 @@ public class CourseDate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String date;
+    private Long id;
+    private String dateName;
 
+    @ManyToOne
+    Course course;
+
+//    @OneToMany
+//    List<Attendance> attendances;
 
     public CourseDate() {
     }
 
-    public CourseDate(String date) {
-        this.date = date;
+    public CourseDate(String dateName) {
+        this.dateName = dateName;
     }
 
-    public long getId() {
+    public CourseDate(String dateName, Course course) {
+        this.dateName = dateName;
+        this.course = course;
+    }
+
+//    public CourseDate(String dateName, Course course, List<Attendance> attendances) {
+//        this.dateName = dateName;
+//        this.course = course;
+//        this.attendances = attendances;
+//    }
+
+    public Long getId() {
         return id;
     }
 
@@ -27,11 +45,27 @@ public class CourseDate {
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateName() {
+        return dateName;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateName(String dateName) {
+        this.dateName = dateName;
     }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+//    public List<Attendance> getAttendances() {
+//        return attendances;
+//    }
+//
+//    public void setAttendances(List<Attendance> attendances) {
+//        this.attendances = attendances;
+//    }
 }

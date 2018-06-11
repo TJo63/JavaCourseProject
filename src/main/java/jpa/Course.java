@@ -12,8 +12,8 @@ import java.util.List;
             private Long id;
             private String stringId;
             private String courseName;
-//            @OneToMany
-//            private List <CourseDate> courseDates;
+            @OneToMany
+            private List <CourseDate> courseDates;
 
 
             public Course(){}
