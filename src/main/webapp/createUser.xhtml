@@ -35,14 +35,12 @@
                 Temp password: <h:inputText id="student_password_id" value="#{adminBean.password}" required="true"/>
                 <!--Course ID : <h:inputText id="courseid_id" required="true"/>-->
                 Course ID :
+
                 <p:tab>
-                    <select name="Select Course">
-                        <option value="play">J001</option>
-                        <option value="ride">C001</option>
-                        <option value="drive">C002</option>
-                        <option value="drive">C003</option>
-                        <option value="drive">P001</option>
-                    </select>
+                    <p:selectOneMenu id="course" value="#{adminBean.courseid}" style="width:150px">
+                        <f:selectItem itemLabel="Select Course"  />
+                        <f:selectItems value="#{courseBean.dropDown}" />
+                    </p:selectOneMenu>
                 </p:tab>
                 <p:tab>
                 <h:commandButton value="Create" action="#{adminBean.addStudent}"/>
@@ -61,15 +59,14 @@
                 Temp password: <h:inputText id="teacher_password_id" value="#{adminBean.password}" required="true"/>
                 <!--Course ID : <h:inputText id="courseid_id" required="true"/>-->
                 Course ID :
+                Course ID :
                 <p:tab>
-                <select name="Select Course">
-                    <option value="play">J001</option>
-                    <option value="ride">C001</option>
-                    <option value="drive">C002</option>
-                    <option value="drive">C003</option>
-                    <option value="drive">P001</option>
-                </select>
+                    <p:selectOneMenu id="courseteacher" value="#{adminBean.courseid}" style="width:150px">
+                        <f:selectItem itemLabel="Select Course"  />
+                        <f:selectItems value="#{courseBean.dropDown}" />
+                    </p:selectOneMenu>
                 </p:tab>
+
                 Department:
                 <p:tab> <select name="Department">
                     <option value="play">Computer Science</option>

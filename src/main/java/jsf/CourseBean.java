@@ -33,12 +33,13 @@ public String addCourse(){
 public List<CourseDomain> getCourses(){
     return cs.readCourses();
 }
+
 //Convert List<CourseDomain> getCourses() above to Map<Long, String> dropDown()..
-public Map<Long, String> dropDown(){
+public Map<String,Long> getDropDown(){
     List<CourseDomain> listDomain = getCourses();
-    Map<Long, String> dropDownMap = new HashMap<>();
+    Map<String,Long> dropDownMap = new HashMap<>();
     for (CourseDomain cD:listDomain) {
-        dropDownMap.put(cD.getId(), cD.getStringId());
+        dropDownMap.put(cD.getStringId(),cD.getId());
     }
         return dropDownMap;
 

@@ -10,8 +10,6 @@
 <f:view>
     <!--<h:outputLabel value="Hello, world"/>-->
 </f:view>
-
-
 <h:head>
     <style type="text/css">
         .bodystyle{
@@ -19,12 +17,8 @@
             background-repeat: no-repeat;
             background-size: 1500px 800px;
             background-color: lightgrey;
-        ;
 
         }
-
-
-
     </style>
 </h:head>
 
@@ -46,6 +40,9 @@
             </p:column>
             <p:column headerText="Email">
                 <h:outputText value="#{tr.email}" />
+            </p:column>
+            <p:column headerText="CourseID">
+                <h:outputText value="#{tr.courseid}" />
             </p:column>
             <p:column headerText="Modify">
                 <p:commandButton value="Edit" action="#{adminBean.editTeacher(tr.id)}"/>

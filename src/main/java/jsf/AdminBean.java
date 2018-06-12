@@ -22,6 +22,7 @@ public class AdminBean {
     private String email;
     private String password;
     private  Long selectedStudent;
+    private Long courseid;
 
     @EJB
     AdminService adminService;
@@ -29,8 +30,8 @@ public class AdminBean {
     public String addStudent(){
 //        if(getId()==null)
 
-        adminService.addStudent(new StudentDomain(getFirstName(),getLastName(),getEmail()));
-        System.out.println("This is in admin bean, email is : "+getEmail());
+        adminService.addStudent(new StudentDomain(getFirstName(),getLastName(),getEmail(),getCourseid()));
+        System.out.println("This is in admin bean, courseid is : "+getCourseid());
 
         addStudentPassword();
         return "createUser";
@@ -38,7 +39,7 @@ public class AdminBean {
     }
 
     public String saveStudent(){
-        adminService.saveStudent(new StudentDomain(getId(),getFirstName(),getLastName(),getEmail()));
+        adminService.saveStudent(new StudentDomain(getId(),getFirstName(),getLastName(),getEmail(),getCourseid()));
         System.out.println("This is in admin bean,the student saved is :"+getId()+getFirstName()+getLastName()+getEmail());
 
         return "adminviewstudents";
@@ -67,7 +68,7 @@ public class AdminBean {
     public String addTeacher(){
 //        if(getId()==null)
 
-        adminService.addTeacher(new TeacherDomain(getFirstName(),getLastName(),getEmail()));
+        adminService.addTeacher(new TeacherDomain(getFirstName(),getLastName(),getEmail(),getCourseid()));
         System.out.println("This is in admin bean,  teacher email is : "+getEmail());
 
         addTeacherPassword();
@@ -84,7 +85,7 @@ public class AdminBean {
         return "updateteacherpage";
     }
     public String saveTeacher(){
-        adminService.saveTeacher(new TeacherDomain(getId(),getFirstName(),getLastName(),getEmail()));
+        adminService.saveTeacher(new TeacherDomain(getId(),getFirstName(),getLastName(),getEmail(),getCourseid()));
         System.out.println("This is in admin bean,the teacher saved is :"+getId()+getFirstName()+getLastName()+getEmail());
 
         return "adminviewteachers";
@@ -107,7 +108,7 @@ public class AdminBean {
         return "createUser";
     }
     public List<StudentDomain> getAllStudents(){
-        System.out.println(adminService.viewAllStudents());
+        System.out.println("The view students from admin bean is "+ adminService.viewAllStudents());
         return adminService.viewAllStudents();
     }
     public List<TeacherDomain> getAllTeachers(){
@@ -162,5 +163,13 @@ public class AdminBean {
 
     public void setSelectedStudent(Long selectedStudent) {
         this.selectedStudent = selectedStudent;
+    }
+
+    public Long getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(Long courseid) {
+        this.courseid = courseid;
     }
 }
