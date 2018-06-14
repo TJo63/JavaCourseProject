@@ -8,9 +8,6 @@
 
 
 
-<f:view>
-    <h:outputLabel value="Courses"/>
-</f:view>
 <h:head>
     <style type="text/css">
         .bodystyle{
@@ -25,11 +22,13 @@
     </style>
 </h:head>
 <h:body styleClass="bodystyle">
+    <h:outputLabel value="#{courseBean.selectedCourse}"/>
     <h:form>
-        <h:dataTable id="dt1" value="#{courseBean.courses}" var="cs" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%"  >
+
+        <h:dataTable id="dt1" value="#{courseBean.courseDates}" var="cs" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%"  >
 
             <f:facet name="header">
-                <h:outputText value="Courses" />
+                <h:outputText value="Course dates" />
             </f:facet>
 
             <h:column>
@@ -41,7 +40,7 @@
 
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Course Id" />
+                    <h:outputText value="Date / Name" />
                 </f:facet>
                 <h:outputText style="" value="#{cs.stringId}" ></h:outputText>
             </h:column>
@@ -58,12 +57,10 @@
             </h:column>
 
             <h:column >
-                <h:commandButton value="Delet Course" action="#{courseBean.removeCourse(cs.id)}"/>
+                <h:commandButton value="Delete" action="#{courseBean.removeCourse(cs.id)}"/>
             </h:column>
 
-            <h:column >
-                <h:commandButton value="Add Course Date" action="#{courseBean.goToSelectedCourse(cs.id)}"/>
-            </h:column>
+
 
             <f:facet name="footer">
                 <h:outputText value="The End" />
@@ -74,63 +71,35 @@
 
 
     <h:form>
-        <h:outputText value="Edit course details" />
+        <h:outputText value="Edit course date details" />
         <h:panelGrid columns="2" cellpadding="20">
             Update Course ID : <h:inputText id="courseid_change_id" value="#{courseBean.stringId}" required="true"/>
             Update Course Name : <h:inputText id="coursename_change_id" value="#{courseBean.courseName}" required="true"/>
 
 
 
-                <h:commandButton value="Update Course" action="#{courseBean.addUppdatedCourse}"/>
+            <h:commandButton value="Update Course Details" action="#{courseBean.addUppdatedCourse}"/>
 
         </h:panelGrid>
     </h:form>
 
 
-        <h:form>
-            <h:outputText value="Add course" />
-            <h:panelGrid columns="2" cellpadding="20">
-                Course ID : <h:inputText id="courseid_input_id" value="#{courseBean.stringId}" required="true"/>
-                Course Name : <h:inputText id="coursename_input_id" value="#{courseBean.courseName}" required="true"/>
+    <h:form>
+        <h:outputText value="Add Course Date" />
+        <h:panelGrid columns="2" cellpadding="20">
+            Date / Name : <h:inputText id="courseid_input_id" value="#{courseBean.stringId}" required="true"/>
+            Course Name : <h:inputText id="coursename_input_id" value="#{courseBean.courseName}" required="true"/>
 
 
-                <h:body>
-                    <h:commandButton value="Create Course" action="#{courseBean.addCourse}"/>
-                </h:body>
-            </h:panelGrid>
-        </h:form>
+            <h:body>
+                <h:commandButton value="Create Course Date" action="#{courseBean.addCourseDate}"/>
+            </h:body>
+        </h:panelGrid>
+    </h:form>
 
 
 
 
-</h:body>
-<h:body styleClass="bodystyle">
-    <center>
-        <h1>Update Course</h1>
-        <table>
-            <tr>
-                <td>Course Id:</td>
-                <td>
-                    <h:inputText label="String Id"
-                                 id="stringid"
-
-                                 required="true"/>
-                    <h:message for="stringid" />
-                </td>
-            </tr>
-            <tr>
-                <td>Course Name:</td>
-                <td>
-                    <h:inputText label="Course Name"
-                                   id="coursename"
-
-                                   required="true"/>
-                    <h:message for="coursename" />
-                </td>
-            </tr>
-        </table>
-        <h:button value="Update Course" outcome="adminviewcourses"/>
-    </center>
 </h:body>
 
 </html>

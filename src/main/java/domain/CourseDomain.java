@@ -6,10 +6,16 @@ cd /Users/roger/glassfish5/bin
 *  ./asadmin
 * */
 
+import jpa.CourseDate;
+
+import java.util.List;
+
 public class CourseDomain {
     private Long id;
     private String stringId;
     private String courseName;
+    private List<CourseDate> courseDates;
+
 
     public CourseDomain() {
     }
@@ -23,6 +29,13 @@ public class CourseDomain {
         this.id = id;
         this.stringId = stringId;
         this.courseName = courseName;
+    }
+
+    public CourseDomain(Long id, String stringId, String courseName, List<CourseDate> courseDates) {
+        this.id = id;
+        this.stringId = stringId;
+        this.courseName = courseName;
+        this.courseDates = courseDates;
     }
 
     public Long getId() {
@@ -47,5 +60,13 @@ public class CourseDomain {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public List<CourseDate> getCourseDates() {
+        return courseDates;
+    }
+
+    public void setCourseDates(List<CourseDate> courseDates) {
+        this.courseDates = courseDates;
     }
 }
