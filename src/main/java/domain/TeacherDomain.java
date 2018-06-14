@@ -6,6 +6,7 @@ public class TeacherDomain {
     private String lastName;
     private String email;
     private String password;
+    private Long courseid;
 
     public TeacherDomain(String firstName, String lastName,String email) {
         this.firstName = firstName;
@@ -14,19 +15,28 @@ public class TeacherDomain {
 
     }
 
-    public TeacherDomain(long id, String firstName, String lastName, String email,String password) {
+    public TeacherDomain(String firstName,String lastName,String email,Long courseid) {
+        this.firstName = firstName;
+        this.lastName=lastName;
+        this.email=email;
+        this.courseid=courseid;
+    }
+
+    public TeacherDomain(long id, String firstName, String lastName, String email, String password, Long courseid) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email=email;
         this.password=password;
+        this.courseid=courseid;
     }
 
-    public TeacherDomain(long id, String firstName, String lastName, String email) {
+    public TeacherDomain(long id, String firstName, String lastName, String email,Long courseid) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email=email;
+        this.courseid=courseid;
 
     }
     public TeacherDomain(String email,String password) {
@@ -72,5 +82,13 @@ public class TeacherDomain {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(Long courseid) {
+        this.courseid = courseid;
     }
 }

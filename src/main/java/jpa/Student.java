@@ -23,16 +23,25 @@ public class Student {
     private String firstName;
     private String lastName;
     private String email;
+    private Long courseId;
 //    private List<StudentDomain> studentArrayList=new ArrayList<>();
 
     public Student(){
 
     }
 
-    public Student(String firstName,String lastName,String email){
+    //public Student(String firstName,String lastName,String email){
+       // this.firstName=firstName;
+        //this.lastName=lastName;
+       // this.email=email;
+
+    //}
+
+    public Student(String firstName,String lastName,String email,Long courseId){
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
+        this.courseId=courseId;
 
     }
 
@@ -61,7 +70,7 @@ public class Student {
     }
 
     public String getEmail() {
-        System.out.println("The email from the student jpa class is :"+ email);
+//        System.out.println("The email from the student jpa class is :"+ email);
         return email;
 
     }
@@ -79,4 +88,12 @@ public class Student {
 //        return studentArrayList;
 //    }
 
+
+    public Long getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
+    }
 }

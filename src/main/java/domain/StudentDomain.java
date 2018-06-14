@@ -6,11 +6,19 @@ public class StudentDomain {
     private String lastName;
     private String email;
     private String password;
+    private Long courseid;
 
     public StudentDomain(String firstName, String lastName,String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email=email;
+
+    }
+    public StudentDomain(String firstName, String lastName,String email,Long courseid) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email=email;
+        this.courseid=courseid;
 
     }
 
@@ -22,7 +30,7 @@ public class StudentDomain {
         this.password=password;
     }
 
-    public StudentDomain(long id, String firstName, String lastName, String email) {
+    public StudentDomain(long id, String firstName, String lastName, String email,Long courseid) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,11 +42,11 @@ public class StudentDomain {
         this.password=password;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -72,5 +80,13 @@ public class StudentDomain {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(Long courseid) {
+        this.courseid = courseid;
     }
 }

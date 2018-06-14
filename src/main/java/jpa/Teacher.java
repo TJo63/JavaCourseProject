@@ -22,16 +22,18 @@ public class Teacher {
     private String firstName;
     private String lastName;
     private String email;
+    private Long courseId;
 //    private List<TeacherDomain> TeacherArrayList=new ArrayList<>();
 
     public Teacher(){
 
     }
 
-    public Teacher(String firstName,String lastName,String email){
+    public Teacher(String firstName,String lastName,String email,Long courseId){
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
+        this.courseId=courseId;
 
     }
 
@@ -78,4 +80,12 @@ public class Teacher {
 //        return TeacherArrayList;
 //    }
 
+
+    public Long getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
+    }
 }
