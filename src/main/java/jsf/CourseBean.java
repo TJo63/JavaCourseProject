@@ -54,7 +54,7 @@ public String addUppdatedCourse(){
     return "adminviewcourses";
 }
 
-//Hämtar alla kurser från tabell
+//Hämtar en kurse från tabell
 public String getCourse(long id){
     CourseDomain cD = cs.getCourseById(id);
     setStringId(cD.getStringId());
@@ -72,7 +72,11 @@ public String removeCourse(long id){
 //CoursDates CRUD
     public String getSelectedCourse(){
         CourseDomain cD2 = cs.getCourseById(selectedCourseId);
-        return cD2.getCourseName() + " " + cD2.getStringId();
+        return cD2.getCourseName() + "   " + cD2.getStringId();
+    }
+
+    public List<CourseDateDomain> getCourseDatesForList(){
+        return cs.readCourseDates();
     }
 
     public String getCourseForDates(){

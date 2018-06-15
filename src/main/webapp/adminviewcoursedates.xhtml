@@ -18,14 +18,13 @@
 
         }
 
-
     </style>
 </h:head>
 <h:body styleClass="bodystyle">
     <h:outputLabel value="#{courseBean.selectedCourse}"/>
     <h:form>
 
-        <h:dataTable id="dt1" value="#{courseBean.courseDates}" var="cs" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%"  >
+        <h:dataTable id="avcd" value="#{courseBean.courseDatesForList}" var="cdl" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%"  >
 
             <f:facet name="header">
                 <h:outputText value="Course dates" />
@@ -35,29 +34,24 @@
                 <f:facet name="header">
                     <h:outputText value="id" />
                 </f:facet>
-                <h:outputText style="" value="#{cs.id}" ></h:outputText>
+                <h:outputText style="" value="#{cdl.id}" ></h:outputText>
             </h:column>
 
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Date / Name" />
                 </f:facet>
-                <h:outputText style="" value="#{cs.stringId}" ></h:outputText>
+                <h:outputText style="" value="#{cdl.dateName}" ></h:outputText>
             </h:column>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Course Name"/>
-                </f:facet>
-                <h:outputText value="#{cs.courseName}"></h:outputText>
+
+
+            <h:column >
+                <h:commandButton value="Edit" action="#{courseBean.getCourse(cdl.id)}"/>
             </h:column>
 
             <h:column >
-                <h:commandButton value="Edit" action="#{courseBean.getCourse(cs.id)}"/>
-            </h:column>
-
-            <h:column >
-                <h:commandButton value="Delete" action="#{courseBean.removeCourse(cs.id)}"/>
+                <h:commandButton value="Delete" action="#{courseBean.removeCourse(cdl.id)}"/>
             </h:column>
 
 

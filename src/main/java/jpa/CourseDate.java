@@ -5,7 +5,7 @@ import java.util.List;
 
 
 @Entity
-
+@NamedQuery(name = "getAllCourseDates", query = "select c from CourseDate c")
 public class CourseDate {
 
     @Id
