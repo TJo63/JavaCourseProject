@@ -1,0 +1,48 @@
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-2.5.xsd">
+
+
+
+   <global-method-security
+       secured-annotation="enabled">
+   </global-method-security>
+
+    <http auto-config="true"
+    access-denied-page="/forbidden.xhtml">
+
+    <intercept-url
+        pattern="/faces/secured**"
+        access="ROLE_ADMIN,ROLE_GUEST" />
+    <intercept-url
+        pattern="/**"
+        access="IS_AUTHENTICATED_ANONYMOUSLY/>
+
+        <form-login
+        login-processing-url="/j_spring_security_check"
+        login_page="/login01.xhtml"
+        default-target-url="/"
+        authentication-failure-url="/login01.xhtml" />
+        <logout
+            logout-url="/logout*"
+            logout-success-url="/" />
+
+    </http>
+      <authentication-provider>
+      <password-encoder hash="md5" />
+
+    <user-service>
+        <user name="admin" password="password" authorities="ROLE_USER" />
+    </user-service>
+
+      </authentication-provider>
+
+
+</beans:beans>-->

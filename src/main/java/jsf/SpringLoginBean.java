@@ -1,12 +1,18 @@
+/*
 package jsf;
 
 
 import org.eclipse.persistence.annotations.CompositeMember;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.component.FacesComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.inject.Scope;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -14,7 +20,9 @@ import javax.servlet.ServletResponse;
 import java.io.IOException;
 
 @Component
-@Scope ("request")
+@Scope("request")
+//@ManagedBean
+//@RequestScoped
 public class SpringLoginBean {
 
     private String user;
@@ -56,11 +64,13 @@ public class SpringLoginBean {
 
     public String loginAction() throws IOException, ServletException
     {
+       // System.out.println("login" + getPassword() );
         ExternalContext context =
                 FacesContext.getCurrentInstance().getExternalContext();
         RequestDispatcher dispatcher = ((ServletRequest)context.getRequest()).getRequestDispatcher(
                 "/j_spring_security_check");
         dispatcher.forward((ServletRequest)context.getRequest(),(ServletResponse)context.getResponse()) ;
-        return null;
+        return "adminlogin.xhtml";
     }
 }
+*/
