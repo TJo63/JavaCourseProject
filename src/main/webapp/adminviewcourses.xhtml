@@ -26,7 +26,7 @@
 </h:head>
 <h:body styleClass="bodystyle">
     <h:form>
-        <h:dataTable id="dt1" value="#{courseBean.courses}" var="cs" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%"  >
+        <h:dataTable id="avc" value="#{courseBean.courses}" var="cl" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%"  >
 
             <f:facet name="header">
                 <h:outputText value="Courses" />
@@ -36,33 +36,33 @@
                 <f:facet name="header">
                     <h:outputText value="id" />
                 </f:facet>
-                <h:outputText style="" value="#{cs.id}" ></h:outputText>
+                <h:outputText style="" value="#{cl.id}" ></h:outputText>
             </h:column>
 
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Course Id" />
                 </f:facet>
-                <h:outputText style="" value="#{cs.stringId}" ></h:outputText>
+                <h:outputText style="" value="#{cl.stringId}" ></h:outputText>
             </h:column>
 
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Course Name"/>
                 </f:facet>
-                <h:outputText value="#{cs.courseName}"></h:outputText>
+                <h:outputText value="#{cl.courseName}"></h:outputText>
             </h:column>
 
             <h:column >
-                <h:commandButton value="Edit" action="#{courseBean.getCourse(cs.id)}"/>
+                <h:commandButton value="Edit" action="#{courseBean.getCourse(cl.id)}"/>
             </h:column>
 
             <h:column >
-                <h:commandButton value="Delet Course" action="#{courseBean.removeCourse(cs.id)}"/>
+                <h:commandButton value="Delet Course" action="#{courseBean.removeCourse(cl.id)}"/>
             </h:column>
 
             <h:column >
-                <h:commandButton value="Add Course Date" action="#{courseBean.goToSelectedCourse(cs.id)}"/>
+                <h:commandButton value="Add Course Date" action="#{courseBean.goToSelectedCourse(cl.id)}"/>
             </h:column>
 
             <f:facet name="footer">

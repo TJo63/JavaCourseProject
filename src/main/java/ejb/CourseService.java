@@ -23,6 +23,8 @@ public interface CourseService {
 
     void createCourceDate(CourseDateDomain courseDateDomain);
 
+    List<CourseDateDomain> readCourseDates();
+
 //    List<Course> seeCourses();
 //    Course seeAttendedCourses();
 

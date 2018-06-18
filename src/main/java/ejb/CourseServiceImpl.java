@@ -62,4 +62,14 @@ public class CourseServiceImpl implements CourseService {
         CourseDate courseDate = new CourseDate(courseDateDomain.getDateName());
         em.persist(courseDate);
     }
+
+    @Override
+    public List<CourseDateDomain> readCourseDates() {
+        List<CourseDate> cDateL = em.createNamedQuery("getAllCourseDates").getResultList();
+        List<CourseDateDomain>cDateDL = new ArrayList();
+        for (CourseDate c: cDateL)
+            cDateDL.add( new CourseDateDomain(c.getId(), c.getDateName()));
+
+        return cDateDL;
+    }
 }
