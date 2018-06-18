@@ -1,10 +1,17 @@
 package jsf;
+import domain.CourseDomain;
 import domain.StudentDomain;
+import ejb.StudentService;
 
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static net.bootsfaces.component.ComponentsEnum.alert;
 
@@ -15,6 +22,71 @@ public class StudentBean {
 
     private String email;
     private String password;
+    private Long id;
+
+    private Long selectedStudent;
+    private String selectedStudentEmail;
+    private Long courseId;
+
+    @EJB
+    StudentService studentService;
+
+    public Long getSelectedStudent() {
+        return selectedStudent;
+    }
+
+    public void setSelectedStudent(Long selectedStudent) {
+        this.selectedStudent = selectedStudent;
+    }
+
+//// public List<CourseDomain> getCurrentCourses(Long id){
+
+public String gotoD(){
+        selectedStudent = id;
+
+        System.out.println("The id set is "+selectedStudent);
+        return  "studentviewcourses";
+    }
+    public String gotoC(){
+        selectedStudentEmail = email;
+
+        System.out.println("The email in gotoc set is "+selectedStudentEmail);
+                return  "studentviewcourses";
+    }
+
+
+
+
+   public List<CourseDomain> getCurrentCourses(){
+       //System.out.println(studentService.viewCurrentCourses(id));
+       //System.out.println("This is in getCurrentCourses and set id is "+selectedStudent);
+       System.out.println("This is getCurrentCourses in student bean , email is "+email);
+         return studentService.viewCurrentCourses(selectedStudentEmail);
+
+    }
+
+    public Map<String,Long> getDropDown(){
+        List<CourseDomain> listDomain = getCoursesToRegister();
+        Map<String,Long> dropDownMap = new HashMap<>();
+        for (CourseDomain cD:listDomain) {
+            dropDownMap.put(cD.getStringId(),cD.getId());
+        }
+        return dropDownMap;
+
+    }
+
+    public List<CourseDomain> getCoursesToRegister(){
+        System.out.println("This is student bean getcourses to register and student email is "+selectedStudentEmail);
+        return studentService.readCoursesToRegister(selectedStudentEmail);
+    }
+
+    public String unregister(Long courseId){
+        System.out.println("This is in studentbean unreginter course id and student email are "+courseId+" "+selectedStudentEmail);
+        studentService.unregister(courseId,selectedStudentEmail);
+
+        return "studentviewcourses";
+    }
+
 
 
 //    public String checkLogin(){
@@ -58,5 +130,29 @@ public class StudentBean {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getSelectedStudentEmail() {
+        return selectedStudentEmail;
+    }
+
+    public void setSelectedStudentEmail(String selectedStudentEmail) {
+        this.selectedStudentEmail = selectedStudentEmail;
     }
 }

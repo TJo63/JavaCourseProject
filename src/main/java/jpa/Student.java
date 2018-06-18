@@ -26,6 +26,14 @@ public class Student {
     private Long courseId;
 //    private List<StudentDomain> studentArrayList=new ArrayList<>();
 
+
+    @ManyToMany(fetch= FetchType.EAGER,cascade = CascadeType.REMOVE)
+   // @JoinTable(
+       //     name="STUD_COURSE",
+      //      joinColumns=@JoinColumn(name="STUD_ID", referencedColumnName="courseId"),
+       //     inverseJoinColumns=@JoinColumn(name="COURSE_ID", referencedColumnName="id"))
+    private List<Course> courses;
+
     public Student(){
 
     }
@@ -95,5 +103,13 @@ public class Student {
 
     public void setCourseId(Long courseId) {
         this.courseId = courseId;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }

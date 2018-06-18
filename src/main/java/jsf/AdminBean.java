@@ -1,4 +1,5 @@
 package jsf;
+import domain.CourseDomain;
 import domain.StudentDomain;
 import domain.TeacherDomain;
 import ejb.AdminService;
@@ -115,6 +116,8 @@ public class AdminBean {
         System.out.println(adminService.viewAllTeachers());
         return adminService.viewAllTeachers();
     }
+
+
 
 
     public Long getId() {

@@ -4,11 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <f:view>
     <!--<h:outputLabel value="Hello, world"/>-->
 </f:view>
-
 <h:head>
     <style type="text/css">
         .bodystyle{
@@ -40,17 +40,21 @@
             <tr>
                 <td>Password:</td>
                 <td>
-                    <h:inputSecret label="Password"
-                                   id="password" value="#{studentBean.password}"
-                                   required="true"/>
+                    <h:inputSecret label="Password" />
+                                  <!-- id="password" value="#{studentBean.password}"-->
+
                     <!--<h:message for="password" />-->
                 </td>
             </tr>
         </table>
-        <p><h:button value="Sign in" action="#{studentBean.checkLogin}" /></p>
-        </h:form>
-    </center>
+            <!--<p><h:button value="Sign in" action="#{studentBean.checkLogin}" /></p>-->
+            <!--<p:button value="Sign in" outcome="studentviewcourses"/>-->
+            <p:commandButton value="Log in" action="#{studentBean.gotoC}"/>
 
-</h:body>
 
-</html>
+            </h:form>
+        </center>
+
+    </h:body>
+
+    </html>
