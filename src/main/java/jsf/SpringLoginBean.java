@@ -13,8 +13,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.io.IOException;
 
-//@Component
-//@Scope ("request")
+@Component
+@Scope ("request")
 public class SpringLoginBean {
 
     private String user;
