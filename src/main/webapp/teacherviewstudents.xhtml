@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<h:head>
+    <style type="text/css">
+        .bodystyle{
+            background-repeat: no-repeat;
+            background-size: 1500px 800px;
+            background-color: lightgrey;
+        }
+    </style>
+</h:head>
+<h:body styleClass="bodystyle">
+    <h:form>
+
+        <p:dataTable  var="st" value="#{teacherBean.students}" >
+            <f:facet name="header">
+                Students you are teaching for this course
+            </f:facet>
+            <!--<p:column selectionMode="single" style="width:16px;text-align:center"/>-->
+            <p:column headerText=" First Name">
+                <h:outputText value="#{st.firstName}" />
+            </p:column>
+            <p:column headerText="Last Name">
+                <h:outputText value="#{st.lastName}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{st.email}" />
+            </p:column>
+            <p:column headerText="Course Id">
+                <h:outputText value="#{st.courseid}" />
+            </p:column>
+            <p:column headerText="View Attendance details">
+                <p:commandButton value="View Attendance" action="#{teacherBean}"/>
+            </p:column>
+            <f:facet name="footer">
+            </f:facet>
+        </p:dataTable>
+
+    </h:form>
+</h:body>
+</html>

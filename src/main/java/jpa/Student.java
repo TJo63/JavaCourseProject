@@ -13,6 +13,7 @@ import java.util.List;
         @NamedQuery(name="selectAllStudents",query="SELECT s FROM Student s"),
 //        @NamedQuery(name="selectSome",query="SELECT t FROM Person t WHERE LOCATE(:filt,t.firstName) >0 ")
 //        @NamedQuery(name = "saveStudent",query = "Update Student set firstname="")
+       // @NamedQuery(name="getStudentToRegister",query="select distinct st.email,st.firstName,st.lastName from Student st where st.email=:email\",Student.class).setParameter(\"email\",email)")
 })
 public class Student {
 
@@ -25,6 +26,14 @@ public class Student {
     private String email;
     private Long courseId;
 //    private List<StudentDomain> studentArrayList=new ArrayList<>();
+
+
+    @ManyToMany(fetch= FetchType.EAGER,cascade = CascadeType.REMOVE)
+   // @JoinTable(
+       //     name="STUD_COURSE",
+      //      joinColumns=@JoinColumn(name="STUD_ID", referencedColumnName="courseId"),
+       //     inverseJoinColumns=@JoinColumn(name="COURSE_ID", referencedColumnName="id"))
+    private List<Course> courses;
 
     public Student(){
 
@@ -95,5 +104,13 @@ public class Student {
 
     public void setCourseId(Long courseId) {
         this.courseId = courseId;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }

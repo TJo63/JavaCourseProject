@@ -1,4 +1,5 @@
 package jsf;
+import domain.CourseDomain;
 import domain.StudentDomain;
 import domain.TeacherDomain;
 import ejb.AdminService;
@@ -33,7 +34,7 @@ public class AdminBean {
         adminService.addStudent(new StudentDomain(getFirstName(),getLastName(),getEmail(),getCourseid()));
         System.out.println("This is in admin bean, courseid is : "+getCourseid());
 
-        addStudentPassword();
+        //addStudentPassword();
         return "createUser";
 
     }
@@ -71,7 +72,7 @@ public class AdminBean {
         adminService.addTeacher(new TeacherDomain(getFirstName(),getLastName(),getEmail(),getCourseid()));
         System.out.println("This is in admin bean,  teacher email is : "+getEmail());
 
-        addTeacherPassword();
+        //addTeacherPassword();
         return "createUser";
 
     }
@@ -115,6 +116,8 @@ public class AdminBean {
         System.out.println(adminService.viewAllTeachers());
         return adminService.viewAllTeachers();
     }
+
+
 
 
     public Long getId() {

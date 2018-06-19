@@ -5,6 +5,7 @@ import java.util.List;
 
 @Entity
 @NamedQuery(name = "getAllCourses", query = "select c from Course c")
+
         public class Course {
 
             @Id
@@ -15,6 +16,8 @@ import java.util.List;
             @OneToMany
             private List <CourseDate> courseDates;
 
+            @ManyToMany(mappedBy="courses")
+            private List<Student> students;
 
             public Course(){}
 
