@@ -25,6 +25,8 @@ public interface CourseService {
 
     List<CourseDateDomain> readCourseDates();
 
+    void uppdateCourseDate(CourseDateDomain courseDateDomain);
+
 //    List<Course> seeCourses();
 //    Course seeAttendedCourses();
 

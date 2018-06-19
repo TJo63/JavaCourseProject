@@ -3,7 +3,6 @@ package jsf;
 import domain.CourseDateDomain;
 import domain.CourseDomain;
 import ejb.CourseService;
-import jpa.CourseDate;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -18,7 +17,9 @@ public class CourseBean {
     private Long id;
     private String stringId;
     private String courseName;
-    private List<CourseDateDomain> courseDates;
+    private List<CourseDateDomain> courseDatesList;
+    private String courseDate;
+    private String dateName;
     private Long selectedCourseId;
     @EJB
     CourseService cs;
@@ -75,7 +76,7 @@ public String removeCourse(long id){
         return cD2.getCourseName() + "   " + cD2.getStringId();
     }
 
-    public List<CourseDateDomain> getCourseDatesForList(){
+    public List<CourseDateDomain> getCourseDates(){
         return cs.readCourseDates();
     }
 
@@ -96,7 +97,12 @@ public String removeCourse(long id){
        cs.createCourceDate( new CourseDateDomain());
         return "adminviewcoursedates";
     }
-
+    //Lägger till uppdaterad kurs i tabellen
+    public String addNewCourseDate(){
+        CourseDateDomain cDste = new CourseDateDomain(getId(), getDateName());
+        cs.uppdateCourseDate(cDste);
+        return "adminviewcourses";
+    }
 
 
     public CourseBean() {
@@ -131,18 +137,35 @@ public String removeCourse(long id){
         this.courseName = courseName;
     }
 
-    public List<CourseDateDomain> getCourseDates() {
-        return courseDates;
+    public List<CourseDateDomain> getCourseDatesList() {
+        return courseDatesList;
     }
 
-    public void setCourseDates(List<CourseDateDomain> courseDates) {
-        this.courseDates = courseDates;
+    public void setCourseDatesList(List<CourseDateDomain> courseDatesList) {
+        this.courseDatesList = courseDatesList;
     }
+
     public Long getSelectedCourseId() {
         return selectedCourseId;
     }
 
     public void setSelectedCourseId(Long selectedCourseId) {
         this.selectedCourseId = selectedCourseId;
+    }
+
+    public String getCourseDate() {
+        return courseDate;
+    }
+
+    public void setCourseDate(String courseDate) {
+        this.courseDate = courseDate;
+    }
+
+    public String getDateName() {
+        return dateName;
+    }
+
+    public void setDateName(String dateName) {
+        this.dateName = dateName;
     }
 }

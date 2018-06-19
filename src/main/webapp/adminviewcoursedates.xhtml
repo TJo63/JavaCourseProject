@@ -24,7 +24,7 @@
     <h:outputLabel value="#{courseBean.selectedCourse}"/>
     <h:form>
 
-        <h:dataTable id="avcd" value="#{courseBean.courseDatesForList}" var="cdl" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%"  >
+        <h:dataTable id="avcd" value="#{courseBean.courseDates}" var="cdl" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%"  >
 
             <f:facet name="header">
                 <h:outputText value="Course dates" />
@@ -67,12 +67,12 @@
     <h:form>
         <h:outputText value="Edit course date details" />
         <h:panelGrid columns="2" cellpadding="20">
-            Update Course ID : <h:inputText id="courseid_change_id" value="#{courseBean.stringId}" required="true"/>
-            Update Course Name : <h:inputText id="coursename_change_id" value="#{courseBean.courseName}" required="true"/>
+            Update Course ID : <h:inputText id="courseid_change_id" value="#{courseBean.courseDate}" required="true"/>
 
 
 
-            <h:commandButton value="Update Course Details" action="#{courseBean.addUppdatedCourse}"/>
+
+            <h:commandButton value="Update Course Details" action="#{courseBean.addNewCourseDate}"/>
 
         </h:panelGrid>
     </h:form>
@@ -81,12 +81,12 @@
     <h:form>
         <h:outputText value="Add Course Date" />
         <h:panelGrid columns="2" cellpadding="20">
-            Date / Name : <h:inputText id="courseid_input_id" value="#{courseBean.stringId}" required="true"/>
-            Course Name : <h:inputText id="coursename_input_id" value="#{courseBean.courseName}" required="true"/>
+            Date / Name : <h:inputText id="courseid_input_id" value="#{courseBean.dateName}" required="true"/>
+
 
 
             <h:body>
-                <h:commandButton value="Create Course Date" action="#{courseBean.addCourseDate}"/>
+                <h:commandButton value="Create Course Date" action="#{courseBean.addNewCourseDate}"/>
             </h:body>
         </h:panelGrid>
     </h:form>

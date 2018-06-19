@@ -58,9 +58,9 @@ public class CourseServiceImpl implements CourseService {
     // Coursdate Implementation
 
     @Override
-    public void createCourceDate(CourseDateDomain courseDateDomain) {
-        CourseDate courseDate = new CourseDate(courseDateDomain.getDateName());
-        em.persist(courseDate);
+    public void createCourceDate(CourseDateDomain cDD) {
+        CourseDate cD = new CourseDate(cDD.getDateName());
+        em.persist(cD);
     }
 
     @Override
@@ -71,5 +71,12 @@ public class CourseServiceImpl implements CourseService {
             cDateDL.add( new CourseDateDomain(c.getId(), c.getDateName()));
 
         return cDateDL;
+    }
+
+    @Override
+    public void uppdateCourseDate(CourseDateDomain cDD) {
+        CourseDate c = em.find(CourseDate.class ,cDD.getId());
+        c.setDateName(cDD.getDateName());
+        em.merge(c);
     }
 }
