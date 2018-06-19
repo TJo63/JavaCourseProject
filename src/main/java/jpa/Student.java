@@ -13,6 +13,7 @@ import java.util.List;
         @NamedQuery(name="selectAllStudents",query="SELECT s FROM Student s"),
 //        @NamedQuery(name="selectSome",query="SELECT t FROM Person t WHERE LOCATE(:filt,t.firstName) >0 ")
 //        @NamedQuery(name = "saveStudent",query = "Update Student set firstname="")
+       // @NamedQuery(name="getStudentToRegister",query="select distinct st.email,st.firstName,st.lastName from Student st where st.email=:email\",Student.class).setParameter(\"email\",email)")
 })
 public class Student {
 

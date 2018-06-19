@@ -66,4 +66,28 @@ public class StudentServiceImpl implements StudentService {
         }
         return cDL;
     }
+
+    @Override
+    public void registerCourse(String email, Long courseId){
+        //List<Student> newStudentR= em.createQuery("select distinct st.email,st.firstName,st.lastName from Student st where st.email=:email",Student.class).setParameter("email",email).getResultList();
+       // System.out.println("This is studentserviceimpl and the selected studen/s and size of list is  "+newStudentR+" "+newStudentR.size());
+       // if ( newStudentR.size()==1){
+       //     System.out.println("get(0) is "+newStudentR.get(0));
+        //    Student newStudent = (Student) newStudentR.get(0);
+        //    System.out.println("New student is "+newStudent);
+        //    newStudent.setCourseId(courseId);
+         //   em.merge(newStudent);
+
+        List<String> fnameL= em.createQuery("SELECT distinct st.firstName from Student st where st.email=:email").setParameter("email",email).getResultList();
+        String fname=fnameL.get(0);
+        List<String> lnameL= em.createQuery("SELECT distinct st.lastName from Student st where st.email=:email").setParameter("email",email).getResultList();
+        String lname=lnameL.get(0);
+        //List<Long> idL=em.createQuery("select nextval('student_id_seq')").getResultList();
+        //Long id=idL.get(0);
+
+        Student newStudent= new Student(fname,lname,email,courseId);
+        em.merge(newStudent);
+    }
+
+
 }

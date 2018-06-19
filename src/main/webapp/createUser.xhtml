@@ -32,7 +32,7 @@
                 Firstname : <p:inputText id="student_firstname_id" value="#{adminBean.firstName}" required="true"/>
                 Lastname : <p:inputText id="student_lastname_id" value="#{adminBean.lastName}" required="true"/>
                 Email : <p:inputText id="student_email_id" value="#{adminBean.email}" required="true"/>
-                Temp password: <p:inputText id="student_password_id" value="#{adminBean.password}" required="true"/>
+                Temp password: <p:inputText id="student_password_id" value="#{adminBean.password}" />
                 <!--Course ID : <h:inputText id="courseid_id" required="true"/>-->
                 Course ID :
 
@@ -56,9 +56,9 @@
                 Lastname : <h:inputText id="teacher_lastname_id" value="#{adminBean.lastName}" required="true"/>
                 <!--Department ID : <h:inputText id="departmentid_id" required="true"/>-->
                 Email : <h:inputText id="teacher_email_id" value="#{adminBean.email}" required="true"/>
-                Temp password: <h:inputText id="teacher_password_id" value="#{adminBean.password}" required="true"/>
+                Temp password: <h:inputText id="teacher_password_id" value="#{adminBean.password}" />
                 <!--Course ID : <h:inputText id="courseid_id" required="true"/>-->
-                Course ID :
+
                 Course ID :
                 <p:tab>
                     <p:selectOneMenu id="courseteacher" value="#{adminBean.courseid}" style="width:150px">
@@ -67,13 +67,7 @@
                     </p:selectOneMenu>
                 </p:tab>
 
-                Department:
-                <p:tab> <select name="Department">
-                    <option value="play">Computer Science</option>
-                    <option value="ride">IT</option>
-                    <option value="drive">Computer Applications</option>
-                </select>
-                </p:tab>
+
                 <p:tab>
                     <h:commandButton value="Create" action="#{adminBean.addTeacher}"/>
                 </p:tab>

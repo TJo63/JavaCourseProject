@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <f:view>
     <!--<h:outputLabel value="Hello, world"/>-->
 </f:view>
@@ -24,6 +25,7 @@
 </h:head>
 
 <h:body styleClass="bodystyle">
+    <h:form>
     <center>
         <h1>Teacher Login</h1>
         <table>
@@ -31,7 +33,7 @@
                 <td>Teacher ID:</td>
                 <td>
                     <h:inputText label="User Id"
-                                 id="userId" value="#{userBean.teacher_id}"
+                                 id="userId" value="#{teacherBean.email}"
                                  required="true"/>
                     <h:message for="userId" />
                 </td>
@@ -39,15 +41,15 @@
             <tr>
                 <td>Password:</td>
                 <td>
-                    <h:inputSecret label="Password"
-                                   id="password" value="#{userBean.password}"
-                                   required="true"/>
-                    <h:message for="password" />
+                    <h:inputSecret label="Password"/>
+
                 </td>
             </tr>
         </table>
-        <p><h:button value="Sign in" outcome="teacherpage1"/></p>
+       <!-- <p><h:button value="Sign in" outcome="teacherpage1"/></p>-->
+        <p:commandButton value="Log in" action="#{teacherBean.gotoC}"/>
     </center>
+    </h:form>
 </h:body>
 
 </html>

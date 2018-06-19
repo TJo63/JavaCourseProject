@@ -79,6 +79,13 @@ public String gotoD(){
         System.out.println("This is student bean getcourses to register and student email is "+selectedStudentEmail);
         return studentService.readCoursesToRegister(selectedStudentEmail);
     }
+    public String registerCourse(){
+        System.out.println("This is student bean register course and student email and courseID is "+selectedStudentEmail+" "+courseId);
+       // return studentService.registerCourse(selectedStudentEmail,courseId);
+        studentService.registerCourse(selectedStudentEmail,courseId);
+        return "studentviewcourses";
+
+    }
 
     public String unregister(Long courseId){
         System.out.println("This is in studentbean unreginter course id and student email are "+courseId+" "+selectedStudentEmail);

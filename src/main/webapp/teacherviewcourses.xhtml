@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <f:view>
-    <!--<h:outputLabel value="Hello, world"/>-->
+    <h:outputLabel value="Hello, world"/>
 </f:view>
 <h:head>
     <style type="text/css">
@@ -20,9 +20,10 @@
 </h:head>
 <h:body styleClass="bodystyle">
     <h:form>
-        <p:dataTable  var="cs" value="#{studentBean.currentCourses}" >
+
+        <p:dataTable  var="cs" value="#{teacherBean.currentCourses}" >
             <f:facet name="header">
-                Courses you are registered
+                Courses you are teaching
             </f:facet>
             <!--<p:column selectionMode="single" style="width:16px;text-align:center"/>-->
             <p:column headerText=" Course ID">
@@ -34,30 +35,18 @@
             <p:column headerText="Course Name">
                 <h:outputText value="#{cs.courseName}" />
             </p:column>
-            <p:column headerText="View Attendance">
-                <p:commandButton value="View Attendance"/>
+            <p:column headerText="View Student details">
+                <p:commandButton value="View Students" action="#{teacherBean.gotoD(cs.id)}"/>
             </p:column>
-            <p:column headerText="Un-Register">
-                <!--<p:commandButton value="Un-Register" action="#{studentBean.unregister(cs.id)}"/>-->
-                <p:growl id="message" showDetail="true" />
-                <p:commandButton value="Un-register" actionListener="#{studentBean.unregister(cs.id)}" update="message" >
-                    <p:confirm header="Un-register this course?" message="Are you sure?" icon="ui-icon-alert" />
-                </p:commandButton>
+            <p:column headerText="Attendance">
+                <p:commandButton value="Enter Attendance"/>
             </p:column>
+
 
             <f:facet name="footer">
             </f:facet>
         </p:dataTable>
-        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-        </p:confirmDialog>
-        <br/>
-        <br/>
-        <center>
 
-        </center>
     </h:form>
-    <p:button value="Register a new course" outcome="studentregister"/>
 </h:body>
 </html>
