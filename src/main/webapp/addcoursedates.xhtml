@@ -5,12 +5,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
->
+      xmlns:p="http://primefaces.org/ui">
 <f:view>
-    <!--<h:outputLabel value="Hello, world"/>-->
+    <h:outputLabel value="Hello, world"/>
 </f:view>
-
 <h:head>
     <style type="text/css">
         .bodystyle{
@@ -21,29 +19,18 @@
         ;
 
         }
-        .tablestyle{
-            font-family: "Courier New", Courier, monospace;
-            color: black;
-        }
-
     </style>
 </h:head>
-
 <h:body styleClass="bodystyle">
-<h1>Welcome Admin</h1>
-    <div align="center">
-    <p:button value="View Students" outcome="adminviewstudents"/>
-    <br></br><br></br>
-    <p:button value="View Teachers" outcome="adminviewteachers"/>
-    <br></br><br></br>
-    <p:button value="Create new user" outcome="createUser"/>
+    <h:form>
+        <center>
+        <h1>Please enter the date in ddmmyy format for the course to occur</h1>
+            <p:inputText value="#{courseBean.date}"/><br/>
+            <p:commandButton value="Add" action="#{courseBean.addDates}"/><br/>
+            <p:button value="Go back to courses" outcome="adminviewcourses"/><br/>
+            <p:button value="View Dates for this course" outcome="adminviewdates"/>
+        </center>
 
-
-    </div>
-
-
-
-
+    </h:form>
 </h:body>
-
 </html>

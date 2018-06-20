@@ -2,6 +2,7 @@ package ejb;
 
 import domain.CourseDateDomain;
 import domain.CourseDomain;
+import domain.DateDomain;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -27,8 +28,12 @@ public interface CourseService {
 
     void uppdateCourseDate(CourseDateDomain courseDateDomain);
 
+    void addDates(DateDomain dd);
+
 //    List<Course> seeCourses();
 //    Course seeAttendedCourses();
+
+    List<DateDomain> readDates(Long gotCourseId);
 
 
 }

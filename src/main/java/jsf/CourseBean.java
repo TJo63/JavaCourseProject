@@ -2,6 +2,7 @@ package jsf;
 
 import domain.CourseDateDomain;
 import domain.CourseDomain;
+import domain.DateDomain;
 import ejb.CourseService;
 
 import javax.ejb.EJB;
@@ -21,6 +22,10 @@ public class CourseBean {
     private String courseDate;
     private String dateName;
     private Long selectedCourseId;
+
+    private Long courseId;
+    private Long gotCourseID;
+    private String date;
     @EJB
     CourseService cs;
 
@@ -104,6 +109,27 @@ public String removeCourse(long id){
         return "adminviewcourses";
     }
 
+    //Code added by Gayathri#############################################################################
+
+    public String gotoC(Long courseId){
+        System.out.println("This is gotoC and the course ID got is "+courseId);
+
+        gotCourseID=courseId;
+        System.out.println("The assigned courseid is "+gotCourseID);
+
+        return "addcoursedates";
+    }
+
+    public String addDates(){
+        DateDomain dd=new DateDomain(getGotCourseID(),getDate());
+        cs.addDates(dd);
+        return "addcoursedates";
+    }
+
+    public List<DateDomain> getDates(){
+        return cs.readDates(gotCourseID);
+    }
+
 
     public CourseBean() {
     }
@@ -167,5 +193,29 @@ public String removeCourse(long id){
 
     public void setDateName(String dateName) {
         this.dateName = dateName;
+    }
+
+    public Long getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
+    }
+
+    public Long getGotCourseID() {
+        return gotCourseID;
+    }
+
+    public void setGotCourseID(Long gotCourseID) {
+        this.gotCourseID = gotCourseID;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

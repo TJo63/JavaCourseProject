@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<h:head>
+    <style type="text/css">
+        .bodystyle{
+            background-repeat: no-repeat;
+            background-size: 1500px 800px;
+            background-color: lightgrey;
+        }
+    </style>
+</h:head>
+<h:body styleClass="bodystyle">
+    <h:form>
+
+        <p:dataTable  var="cs" value="#{courseBean.dates}" >
+            <f:facet name="header">
+                Dates for this course
+            </f:facet>
+            <!--<p:column selectionMode="single" style="width:16px;text-align:center"/>-->
+            <p:column headerText=" date ID">
+                <h:outputText value="#{cs.id}" />
+            </p:column>
+            <p:column headerText="Course ID">
+                <h:outputText value="#{cs.courseId}" />
+            </p:column>
+            <p:column headerText="Date">
+                <h:outputText value="#{cs.date}" />
+            </p:column>
+
+
+
+
+            <f:facet name="footer">
+            </f:facet>
+        </p:dataTable>
+
+    </h:form>
+</h:body>
+</html>

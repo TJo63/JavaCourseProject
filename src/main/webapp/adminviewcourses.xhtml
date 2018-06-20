@@ -9,7 +9,7 @@
 
 
 <f:view>
-    <h:outputLabel value="Courses"/>
+    <h:outputLabel value="admin view courses"/>
 </f:view>
 <h:head>
     <style type="text/css">
@@ -62,7 +62,8 @@
             </h:column>
 
             <h:column >
-                <h:commandButton value="Add Course Date" action="#{courseBean.goToSelectedCourse(cl.id)}"/>
+                <!--<h:commandButton value="Add Course Date" action="#{courseBean.goToSelectedCourse(cl.id)}"/>-->
+                <h:commandButton value="Add Course Date" action="#{courseBean.gotoC(cl.id)}"/>
             </h:column>
 
             <f:facet name="footer">
