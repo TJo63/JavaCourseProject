@@ -8,7 +8,9 @@ public class Attendance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Boolean presence;
+    private Long dateId;
+    private Long studentId;
+    private Long presence;
 
    // @ManyToOne
    // @JoinColumn(name = "CourseDateId", referencedColumnName = "ID")
@@ -29,15 +31,36 @@ public class Attendance {
         this.id = id;
     }
 
-    public Boolean getPresence() {
+    public Attendance(Long dateId,Long studentId,Long presence) {
+        this.dateId = dateId;
+        this.presence=presence;
+    }
+
+    public Long getDateId() {
+        return dateId;
+    }
+
+    public void setDateId(Long dateId) {
+        this.dateId = dateId;
+    }
+
+    public Long getPresence() {
         return presence;
     }
 
-    public void setPresence(Boolean presence) {
+    public void setPresence(Long presence) {
         this.presence = presence;
     }
 
-  //  public CourseDate getCourseDate() {
+    public Long getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
+
+    //  public CourseDate getCourseDate() {
   //      return courseDate;
   //  }
 

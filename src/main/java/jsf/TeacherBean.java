@@ -1,5 +1,6 @@
 package jsf;
 
+import domain.AttendanceDomain;
 import domain.CourseDomain;
 import domain.StudentDomain;
 import ejb.TeacherService;
@@ -19,6 +20,9 @@ public class TeacherBean {
     private String selectedTeacherEmail;
     private Long courseId;
     private Long selectedCourseId;
+    private Long presence;
+    private  Long dateId;
+    private Long studentId;
 
     @EJB
     TeacherService teacherService;
@@ -47,6 +51,12 @@ public class TeacherBean {
         System.out.println("This is getCStudents in Teacher bean , email and course ID is "+email+" "+courseId);
         return teacherService.viewStudents(selectedTeacherEmail,selectedCourseId);
 
+    }
+    public String saveAttendance(Long studentId){
+
+        System.out.println("This is teacher bean and dateId,studentId,presence are "+dateId+" "+studentId+" "+presence);
+        teacherService.saveAttendance(new AttendanceDomain(dateId,studentId,presence));
+        return "teacherenterattendance";
     }
 
 
@@ -89,5 +99,29 @@ public class TeacherBean {
 
     public void setSelectedCourseId(Long selectedCourseId) {
         this.selectedCourseId = selectedCourseId;
+    }
+
+    public Long getPresence() {
+        return presence;
+    }
+
+    public void setPresence(Long presence) {
+        this.presence = presence;
+    }
+
+    public Long getDateId() {
+        return dateId;
+    }
+
+    public void setDateId(Long dateId) {
+        this.dateId = dateId;
+    }
+
+    public Long getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 }

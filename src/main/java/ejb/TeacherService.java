@@ -1,5 +1,6 @@
 package ejb;
 
+import domain.AttendanceDomain;
 import domain.CourseDomain;
 import domain.StudentDomain;
 
@@ -11,4 +12,5 @@ import java.util.List;
 public interface TeacherService {
     List<CourseDomain> viewCurrentCourses(String email);
     List<StudentDomain> viewStudents(String email,Long courseId);
+    void saveAttendance(AttendanceDomain attendanceDomain);
 }

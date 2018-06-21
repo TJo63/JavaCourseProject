@@ -2,22 +2,23 @@ package domain;
 
 public class AttendanceDomain {
     private Long id;
-    private Long courseDateId;
+    private Long dateId;
     private Long studentId;
-    private Boolean presence;
+    private Long presence;
 
     public AttendanceDomain() {
     }
 
-    public AttendanceDomain(Long id,Long courseDateId,Long studentId,Boolean presence) {
+    public AttendanceDomain(Long id,Long dateId,Long studentId,Long presence) {
         this.id = id;
-        this.courseDateId=courseDateId;
+        this.dateId=dateId;
         this.studentId=studentId;
         this.presence=presence;
     }
-    public AttendanceDomain(Long id,Boolean presence){
-        this.id=id;
+    public AttendanceDomain(Long dateId,Long studentId,Long presence){
+        this.dateId=dateId;
         this.presence=presence;
+        this.studentId=studentId;
     }
 
     public Long getId() {
@@ -29,11 +30,11 @@ public class AttendanceDomain {
     }
 
     public Long getCourseDateId() {
-        return courseDateId;
+        return dateId;
     }
 
     public void setCourseDateId(Long courseDateId) {
-        this.courseDateId = courseDateId;
+        this.dateId = courseDateId;
     }
 
     public Long getStudentId() {
@@ -44,11 +45,19 @@ public class AttendanceDomain {
         this.studentId = studentId;
     }
 
-    public Boolean getPresence() {
+    public Long getPresence() {
         return presence;
     }
 
-    public void setPresence(Boolean presence) {
+    public void setPresence(Long presence) {
         this.presence = presence;
+    }
+
+    public Long getDateId() {
+        return dateId;
+    }
+
+    public void setDateId(Long dateId) {
+        this.dateId = dateId;
     }
 }

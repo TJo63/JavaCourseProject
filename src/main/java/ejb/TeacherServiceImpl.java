@@ -4,8 +4,10 @@ import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import domain.AttendanceDomain;
 import domain.CourseDomain;
 import domain.StudentDomain;
+import jpa.Attendance;
 import jpa.Course;
 import jpa.Student;
 
@@ -32,7 +34,13 @@ public class TeacherServiceImpl implements TeacherService {
         System.out.println("This is TeacherServiceImpl , email and course ID is "+email+" "+courseId);
         List<Student> students=em.createQuery("SELECT st from Teacher tc,Student st where tc.email=:email and tc.courseId=:courseId and st.courseId=tc.courseId").setParameter("email",email).setParameter("courseId",courseId).getResultList();
         return students.stream().
-                map(p-> new StudentDomain(p.getFirstName(),p.getLastName(),p.getEmail(),p.getCourseId())).collect(Collectors.toList());
+                map(p-> new StudentDomain(p.getId(),p.getFirstName(),p.getLastName(),p.getEmail(),p.getCourseId())).collect(Collectors.toList());
+    }
+
+    @Override
+    public void saveAttendance(AttendanceDomain attendanceDomain){
+        Attendance a= new Attendance(attendanceDomain.getDateId(),attendanceDomain.getStudentId(),attendanceDomain.getPresence());
+        em.persist(a);
     }
 
 }
