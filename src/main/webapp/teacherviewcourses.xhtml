@@ -52,6 +52,9 @@
             <p:column headerText="Attendance">
                 <p:commandButton value="Enter Attendance" action="#{teacherBean.putAllAttendance(cs.id)}"/>
             </p:column>
+            <p:column headerText="View Attendance">
+                <p:commandButton value="View Attendance" action="#{teacherBean.gotoG(cs.id)}"/>
+            </p:column>
 
 
             <f:facet name="footer">

@@ -94,4 +94,15 @@ public class TeacherServiceImpl implements TeacherService {
 
     }
 
+    public List <AttendanceDomain> viewAllAttendance(Long courseID){
+         List<Attendance> attendanceList=em.createQuery("SELECT a from Attendance a,Date d where a.dateId=d.Id and d.courseId=:courseId").setParameter("courseId",courseID).getResultList();
+         return attendanceList.stream().map(p->new AttendanceDomain(p.getId(),p.getDateId(),p.getStudentId(),p.getPresence())).collect(Collectors.toList());
+    }
+
+    @Override
+    public List <AttendanceDomain> viewStudentAttendance(Long studentId){
+        List<Attendance> attendanceList=em.createQuery("SELECT a from Attendance a where a.studentId=:studentId").setParameter("studentId",studentId).getResultList();
+        return attendanceList.stream().map(p->new AttendanceDomain(p.getId(),p.getDateId(),p.getStudentId(),p.getPresence())).collect(Collectors.toList());
+    }
+
 }

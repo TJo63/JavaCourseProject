@@ -29,7 +29,7 @@
 
 <h:body styleClass="bodystyle">
     <h:form>
-        <p:dataTable  var="st" value="#{adminBean.allStudents}" >
+        <p:dataTable  var="st" value="#{adminBean.allStudents}" stickyHeader="true" >
         <f:facet name="header">
         Students
         </f:facet>
@@ -65,7 +65,7 @@
             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
         </p:confirmDialog>
 
-
+<p:button value="Back to Admin main page" outcome="adminpage1"/>
 
     </h:form>
 

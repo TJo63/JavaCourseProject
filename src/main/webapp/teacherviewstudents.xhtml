@@ -26,6 +26,9 @@
                 Students you are teaching for this course
             </f:facet>
             <!--<p:column selectionMode="single" style="width:16px;text-align:center"/>-->
+            <p:column headerText=" Student Id">
+                <h:outputText value="#{st.id}" />
+            </p:column>
             <p:column headerText=" First Name">
                 <h:outputText value="#{st.firstName}" />
             </p:column>
@@ -39,12 +42,12 @@
                 <h:outputText value="#{st.courseid}" />
             </p:column>-->
             <p:column headerText="View Attendance details">
-                <p:commandButton value="View Attendance" action="#{teacherBean}"/>
+                <p:commandButton value="View Attendance" action="#{teacherBean.gotoF(st.id)}"/>
             </p:column>
             <f:facet name="footer">
             </f:facet>
         </p:dataTable>
-
+        <p:button value="Back to View Courses" outcome="teacherviewcourses"/>
     </h:form>
 </h:body>
 </html>

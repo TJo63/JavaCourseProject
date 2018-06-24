@@ -24,7 +24,7 @@
     <h:outputLabel value="#{courseBean.selectedCourse}"/>
     <h:form>
 
-        <h:dataTable id="avcd" value="#{courseBean.courseDates}" var="cdl" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%"  >
+        <h:dataTable id="avcd" value="#{courseBean.courseDates}" var="cdl" bgcolor="#F1F1F1" border="2" cellpadding="2" cellspacing="2" width="50%" stickyHeader="true"  >
 
             <f:facet name="header">
                 <h:outputText value="Course dates" />

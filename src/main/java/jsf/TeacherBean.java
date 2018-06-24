@@ -55,11 +55,19 @@ public class TeacherBean {
         return  "teacherviewcourses";
     }
 
-    public void gotoF(){
+    public String gotoF(Long studentId){
         System.out.println("The studentId got is "+studentId);
         selectedStudentId = studentId;
         System.out.println("The studentId set is "+selectedStudentId);
+        return "teacherviewstudentattendance";
 
+    }
+    public String gotoG(Long courseId){
+        System.out.println("The course ID got in gotoD is "+courseId);
+        selectedCourseId = courseId;
+
+        System.out.println("The courseId in gotoD set is "+selectedCourseId);
+        return  "teacherviewallattendance";
     }
 
 
@@ -106,6 +114,14 @@ public class TeacherBean {
         System.out.println("This is updateAbsence in TeacherBean selectedDateId and studentId are "+dateId+" "+studentId);
         teacherService.updateAbsence(dateId,studentId);
         return "teacherenterattendance";
+    }
+
+    public List<AttendanceDomain> getAllAttendance(){
+        return teacherService.viewAllAttendance(selectedCourseId);
+    }
+
+    public List<AttendanceDomain> getStudentAttendance(){
+        return teacherService.viewStudentAttendance(selectedStudentId);
     }
 
 

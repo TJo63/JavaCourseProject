@@ -29,9 +29,9 @@
 
 <h:body styleClass="bodystyle">
     <h:form>
-        <p:dataTable  var="at" value="#{studentBean.viewAttendance}">
+        <p:dataTable  var="at" value="#{teacherBean.studentAttendance}" stickyHeader="true" >
             <f:facet name="header">
-                Students
+                Atetndance
             </f:facet>
             <!--<p:column selectionMode="single" style="width:16px;text-align:center"/>-->
             <p:column headerText=" Attendance Id">
@@ -51,9 +51,9 @@
             <f:facet name="footer">
             </f:facet>
         </p:dataTable>
-    <center>
-    <p:button value="Back to View Course" outcome="studentviewcourses"/>
-    </center>
+        <center>
+            <p:button value="Back to View Students" outcome="teacherviewstudents"/>
+        </center>
 
 
     </h:form>

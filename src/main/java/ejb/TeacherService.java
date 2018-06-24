@@ -4,6 +4,7 @@ import domain.AttendanceDomain;
 import domain.CourseDomain;
 import domain.DateDomain;
 import domain.StudentDomain;
+import jpa.Attendance;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -17,4 +18,6 @@ public interface TeacherService {
     void putAllAttendance(Long courseId,Long dateId);
     List<DateDomain> getDates(Long courseId);
     void updateAbsence(Long selectedDateId,Long studentId);
+    List <AttendanceDomain> viewAllAttendance(Long courseID);
+    List <AttendanceDomain> viewStudentAttendance(Long studentId);
 }

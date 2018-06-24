@@ -21,7 +21,7 @@
 <h:body styleClass="bodystyle">
     <h:form>
 
-        <p:dataTable  var="cs" value="#{courseBean.dates}" >
+        <p:dataTable  var="cs" value="#{courseBean.dates}" stickyHeader="true" >
             <f:facet name="header">
                 Dates for this course
             </f:facet>
@@ -42,7 +42,7 @@
             <f:facet name="footer">
             </f:facet>
         </p:dataTable>
-
+        <p:button value="Back to Admin main page" outcome="adminviewcourses"/>
     </h:form>
 </h:body>
 </html>

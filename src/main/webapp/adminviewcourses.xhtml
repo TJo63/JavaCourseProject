@@ -64,7 +64,7 @@
 
             <h:column >
                 <!--<h:commandButton value="Add Course Date" action="#{courseBean.goToSelectedCourse(cl.id)}"/>-->
-                <h:commandButton value="Add Course Date" action="#{courseBean.gotoC(cl.id)}"/>
+                <h:commandButton value="Add/View Course Date" action="#{courseBean.gotoC(cl.id)}"/>
             </h:column>
 
             <f:facet name="footer">
@@ -100,6 +100,8 @@
                     <h:commandButton value="Create Course" action="#{courseBean.addCourse}"/>
                 </h:body>
             </h:panelGrid>
+
+            <p:button value="Back to Admin main page" outcome="adminpage1"/>
         </h:form>
 
 
