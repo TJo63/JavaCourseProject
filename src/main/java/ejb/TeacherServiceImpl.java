@@ -6,10 +6,12 @@ import javax.persistence.PersistenceContext;
 
 import domain.AttendanceDomain;
 import domain.CourseDomain;
+import domain.DateDomain;
 import domain.StudentDomain;
 import jpa.Attendance;
 import jpa.Course;
 import jpa.Student;
+import jpa.Date;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,6 +43,55 @@ public class TeacherServiceImpl implements TeacherService {
     public void saveAttendance(AttendanceDomain attendanceDomain){
         Attendance a= new Attendance(attendanceDomain.getDateId(),attendanceDomain.getStudentId(),attendanceDomain.getPresence());
         em.persist(a);
+    }
+
+    @Override
+    public void putAllAttendance(Long courseId,Long dateId){
+
+        List<Long> attendanceIdDel =em.createQuery("SELECT a.id from Attendance a where a.dateId=:dateId").setParameter("dateId",dateId).getResultList();
+        System.out.println("The attendence Ids to delete is "+attendanceIdDel);
+        for (Long ad:attendanceIdDel) {
+            Attendance a=em.find(Attendance.class,ad);
+            em.remove(a);
+        }
+
+
+        List<Long> coursestudents=em.createQuery("SELECT distinct st.id from Student st where st.courseId=:courseId").setParameter("courseId",courseId).getResultList();
+        for (Long stdid:coursestudents) {
+            System.out.println("The std id in the loop to create attendance domain and persist is "+stdid);
+
+            Attendance attendance=new Attendance(dateId,stdid, (long) 1);
+            System.out.println("The attendance domain created is "+attendance);
+            em.persist(attendance);
+        }
+
+    }
+
+    @Override
+    public List<DateDomain> getDates(Long courseId){
+        List<Date> dlist=em.createQuery("SELECT d from Date d where d.courseId=:courseId").setParameter("courseId",courseId).getResultList();
+        return dlist.stream().
+                map(p-> new DateDomain(p.getId(),p.getCourseId(),p.getDate())).collect(Collectors.toList());
+    }
+
+    @Override
+   public  void updateAbsence(Long selectedDateId,Long studentId){
+        //Attendance attendance=new Attendance(selectedDateId,studentId,(long) 0);
+       // em.merge(attendance);
+       // em.createQuery("UPDATE Attendance a set a.presence=0 where a.dateId=:dateId and a.studentId=:stdId")
+              //  .setParameter("dateId",selectedDateId).setParameter("stdId",studentId).executeUpdate();
+        System.out.println("This is updateAbsence in Teacher service IMpl the selectedDateId and studentId is "+selectedDateId+" "+studentId);
+        List<Long> attendanceIdList=em.createQuery("select distinct a.id from Attendance a where a.dateId=:dateId and a.studentId=:studentId").setParameter("dateId",selectedDateId).setParameter("studentId",studentId).getResultList();
+        System.out.println("The attendance list and size is  "+attendanceIdList+" "+attendanceIdList.size());
+        if (attendanceIdList.size()==1){
+            Long attId=attendanceIdList.get(0);
+            System.out.println("The attendance ID to change is "+attId);
+            Attendance attendance=em.find(Attendance.class,attId);
+            System.out.println("The Attendance row to update is "+attendance);
+            attendance.setPresence((long) 0);
+            em.merge(attendance);
+        }
+
     }
 
 }

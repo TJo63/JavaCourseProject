@@ -20,12 +20,17 @@
 </h:head>
 <h:body styleClass="bodystyle">
     <h:form>
+        <center>
+
+  </center>
 
         <p:dataTable  var="cs" value="#{teacherBean.currentCourses}" >
             <f:facet name="header">
                 Courses you are teaching
             </f:facet>
             <!--<p:column selectionMode="single" style="width:16px;text-align:center"/>-->
+
+
             <p:column headerText=" Course ID">
                 <h:outputText value="#{cs.id}" />
             </p:column>
@@ -38,15 +43,22 @@
             <p:column headerText="View Student details">
                 <p:commandButton value="View Students" action="#{teacherBean.gotoD(cs.id)}"/>
             </p:column>
+           <!-- <p:column headerText="Course Date">
+           <p:selectOneMenu value="#{teacherBean.dateId}" style="width:150px">
+                    <f:selectItem itemLabel="Select Date"  />
+                    <f:selectItems value="#{teacherBean.dropDown}" />
+                </p:selectOneMenu>
+            </p:column>-->
             <p:column headerText="Attendance">
-                <p:button value="Enter Attendance" outcome="teacherenterattendance"/>
+                <p:commandButton value="Enter Attendance" action="#{teacherBean.putAllAttendance(cs.id)}"/>
             </p:column>
 
 
             <f:facet name="footer">
             </f:facet>
         </p:dataTable>
-
+        <h3>Please enter date id if you want to enter attendance for the date</h3>
+        <p:inputText placeholder="Enter dateid" value="#{teacherBean.dateId}"/>
     </h:form>
 </h:body>
 </html>

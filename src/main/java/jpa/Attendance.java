@@ -34,6 +34,7 @@ public class Attendance {
     public Attendance(Long dateId,Long studentId,Long presence) {
         this.dateId = dateId;
         this.presence=presence;
+        this.studentId=studentId;
     }
 
     public Long getDateId() {

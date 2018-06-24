@@ -1,7 +1,9 @@
 package jsf;
+import domain.AttendanceDomain;
 import domain.CourseDomain;
 import domain.StudentDomain;
 import ejb.StudentService;
+import jpa.Attendance;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -27,6 +29,7 @@ public class StudentBean {
     private Long selectedStudent;
     private String selectedStudentEmail;
     private Long courseId;
+    private Long selectedCourseId;
 
     @EJB
     StudentService studentService;
@@ -42,7 +45,7 @@ public class StudentBean {
 //// public List<CourseDomain> getCurrentCourses(Long id){
 
 public String gotoD(){
-        selectedStudent = id;
+       selectedStudent = id;
 
         System.out.println("The id set is "+selectedStudent);
         return  "studentviewcourses";
@@ -52,6 +55,12 @@ public String gotoD(){
 
         System.out.println("The email in gotoc set is "+selectedStudentEmail);
                 return  "studentviewcourses";
+    }
+    public String gotoE(Long courseId){
+
+        selectedCourseId=courseId;
+        System.out.println("This is gotoE and the selectedstudent and selectedCourse are "+selectedStudent+" "+selectedCourseId);
+        return "studentviewattendance";
     }
 
 
@@ -93,6 +102,11 @@ public String gotoD(){
 
         return "studentviewcourses";
     }
+    public List<AttendanceDomain> getViewAttendance(){
+        System.out.println("This is view attendance in student bean email and courseId are "+selectedStudentEmail+" "+selectedCourseId);
+        return studentService.viewAttendance(selectedStudentEmail,selectedCourseId);
+
+}
 
 
 
@@ -161,5 +175,13 @@ public String gotoD(){
 
     public void setSelectedStudentEmail(String selectedStudentEmail) {
         this.selectedStudentEmail = selectedStudentEmail;
+    }
+
+    public Long getSelectedCourseId() {
+        return selectedCourseId;
+    }
+
+    public void setSelectedCourseId(Long selectedCourseId) {
+        this.selectedCourseId = selectedCourseId;
     }
 }

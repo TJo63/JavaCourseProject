@@ -1,6 +1,8 @@
 package ejb;
 
+import domain.AttendanceDomain;
 import domain.CourseDomain;
+import jpa.Attendance;
 import jpa.Course;
 import jpa.Student;
 
@@ -87,6 +89,19 @@ public class StudentServiceImpl implements StudentService {
 
         Student newStudent= new Student(fname,lname,email,courseId);
         em.merge(newStudent);
+    }
+
+    @Override
+    public List<AttendanceDomain> viewAttendance(String selectedStudentEmail, Long selectedCourseId){
+        List<Attendance> attendanceList = em.createQuery("SELECT a from Attendance a,Student s where  " +
+                "s.email=:selectedStudentEmail and " +
+                "s.courseId=:selectedCourseId and " +
+                "a.studentId=s.id").setParameter("selectedStudentEmail",selectedStudentEmail)
+                .setParameter("selectedCourseId",selectedCourseId).getResultList();
+        System.out.println("The Attendance table outcome is "+attendanceList);
+
+        return attendanceList.stream().map(p->new AttendanceDomain(p.getId(),p.getDateId(),p.getPresence(),p.getStudentId())).collect(Collectors.toList());
+
     }
 
 

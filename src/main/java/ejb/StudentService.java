@@ -1,6 +1,8 @@
 package ejb;
 
+import domain.AttendanceDomain;
 import domain.CourseDomain;
+import jpa.Attendance;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -12,4 +14,5 @@ public interface StudentService {
     void unregister(Long courseID,String email);
     List<CourseDomain> readCoursesToRegister(String email);
     void registerCourse(String email, Long courseId);
+    List<AttendanceDomain> viewAttendance(String selectedStudentEmail,Long selectedCourseId);
 }

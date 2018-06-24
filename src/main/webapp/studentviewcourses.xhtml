@@ -35,7 +35,7 @@
                 <h:outputText value="#{cs.courseName}" />
             </p:column>
             <p:column headerText="View Attendance">
-                <p:commandButton value="View Attendance"/>
+                <p:commandButton value="View Attendance" action="#{studentBean.gotoE(cs.id)}"/>
             </p:column>
             <p:column headerText="Un-Register">
                 <!--<p:commandButton value="Un-Register" action="#{studentBean.unregister(cs.id)}"/>-->
